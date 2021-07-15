@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lyv-yx-D0U">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,36 +13,54 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="ScrollViewAutoLayout_Practice1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iy-8T-wJn">
-                                <rect key="frame" x="192" y="183" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="First"/>
-                                <connections>
-                                    <segue destination="xUS-3g-WF8" kind="show" id="Vap-nO-kMj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzQ-gB-v8I">
-                                <rect key="frame" x="181" y="326" width="52" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Second"/>
-                                <connections>
-                                    <segue destination="zr2-iR-ccf" kind="show" id="b4b-3e-jUv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaF-E9-7gp">
-                                <rect key="frame" x="189" y="433" width="36" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Third"/>
-                                <connections>
-                                    <segue destination="mfs-sU-BPI" kind="show" id="4bP-Ry-jzS"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BL7-6M-nGR">
+                                <rect key="frame" x="169" y="332" width="52" height="180"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iy-8T-wJn">
+                                        <rect key="frame" x="0.0" y="0.0" width="52" height="30"/>
+                                        <state key="normal" title="First"/>
+                                        <connections>
+                                            <segue destination="xUS-3g-WF8" kind="show" id="Vap-nO-kMj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzQ-gB-v8I">
+                                        <rect key="frame" x="0.0" y="50" width="52" height="30"/>
+                                        <state key="normal" title="Second"/>
+                                        <connections>
+                                            <segue destination="zr2-iR-ccf" kind="show" id="b4b-3e-jUv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaF-E9-7gp">
+                                        <rect key="frame" x="0.0" y="100" width="52" height="30"/>
+                                        <state key="normal" title="Third"/>
+                                        <connections>
+                                            <segue destination="mfs-sU-BPI" kind="show" id="4bP-Ry-jzS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S09-I3-pPT">
+                                        <rect key="frame" x="0.0" y="150" width="52" height="30"/>
+                                        <state key="normal" title="Fourth"/>
+                                        <connections>
+                                            <segue destination="ptf-6m-JlS" kind="show" id="tLD-Bx-fhT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="S09-I3-pPT" firstAttribute="centerX" secondItem="9iy-8T-wJn" secondAttribute="centerX" id="BOo-fn-siS"/>
+                                    <constraint firstItem="ZaF-E9-7gp" firstAttribute="centerX" secondItem="9iy-8T-wJn" secondAttribute="centerX" id="GdR-ag-JjL"/>
+                                    <constraint firstItem="YzQ-gB-v8I" firstAttribute="centerX" secondItem="9iy-8T-wJn" secondAttribute="centerX" id="PFb-oF-3dn"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BL7-6M-nGR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PYk-Qk-xWB"/>
+                            <constraint firstItem="BL7-6M-nGR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gQQ-e8-e8c"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NH0-YY-Ph2"/>
                 </viewController>
@@ -56,7 +74,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lyv-yx-D0U" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uan-8o-S7S">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -86,7 +104,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FeO-cF-N2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1597" y="133"/>
+            <point key="canvasLocation" x="1614" y="74"/>
         </scene>
         <!--Third-->
         <scene sceneID="VR4-7B-H3N">
@@ -96,7 +114,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57B-cC-pu4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1575" y="221"/>
+            <point key="canvasLocation" x="1597" y="123"/>
+        </scene>
+        <!--Fourth-->
+        <scene sceneID="7t6-2t-weO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Fourth" id="ptf-6m-JlS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4vc-tM-DTi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N1I-uW-8bc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1618" y="195"/>
         </scene>
     </scenes>
     <resources>
