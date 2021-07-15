@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QoL-Si-xzX">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--First View Controller-->
+        <scene sceneID="fzg-Bm-erv">
+            <objects>
+                <viewController id="QoL-Si-xzX" customClass="FirstViewController" customModule="ScrollViewAutoLayout_Practice1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j76-lN-yDS">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGE-gv-Pa7">
+                                <rect key="frame" x="0.0" y="44" width="390" height="300"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="infinite" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wUm-rU-hpi">
+                                        <rect key="frame" x="20" y="0.0" width="200" height="300"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstItem="wUm-rU-hpi" firstAttribute="leading" secondItem="MkQ-FU-cSZ" secondAttribute="leading" constant="20" id="3PK-Ra-g3X"/>
+                                    <constraint firstItem="wUm-rU-hpi" firstAttribute="trailing" secondItem="MkQ-FU-cSZ" secondAttribute="trailing" constant="220" id="7Vt-Iy-fGH"/>
+                                    <constraint firstItem="wUm-rU-hpi" firstAttribute="height" secondItem="YeU-F4-qZt" secondAttribute="height" id="Bcb-Wh-co0"/>
+                                    <constraint firstItem="wUm-rU-hpi" firstAttribute="top" secondItem="MkQ-FU-cSZ" secondAttribute="top" id="IYo-dq-X2Q"/>
+                                    <constraint firstAttribute="height" constant="300" id="Iml-3M-1nW"/>
+                                    <constraint firstItem="wUm-rU-hpi" firstAttribute="bottom" secondItem="MkQ-FU-cSZ" secondAttribute="bottom" constant="300" id="zoR-3b-g17"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="MkQ-FU-cSZ"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="YeU-F4-qZt"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rvv-s4-7Ol"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <constraints>
+                            <constraint firstItem="eGE-gv-Pa7" firstAttribute="top" secondItem="rvv-s4-7Ol" secondAttribute="top" id="XQA-5M-koi"/>
+                            <constraint firstItem="rvv-s4-7Ol" firstAttribute="trailing" secondItem="eGE-gv-Pa7" secondAttribute="trailing" id="wgN-ih-dcx"/>
+                            <constraint firstItem="eGE-gv-Pa7" firstAttribute="leading" secondItem="rvv-s4-7Ol" secondAttribute="leading" id="xta-ao-Zsf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="GDi-Xg-qfW"/>
+                    <connections>
+                        <outlet property="stackView" destination="wUm-rU-hpi" id="olr-eA-ryC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xHq-lU-3jc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852" y="59"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
