@@ -17,6 +17,7 @@
 		BA166C67269FE76800898127 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA166C66269FE76800898127 /* FirstViewController.swift */; };
 		BA166C69269FEA6800898127 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA166C68269FEA6800898127 /* Second.storyboard */; };
 		BA2ADEEA26A0F23D00D7A1FB /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2ADEE926A0F23D00D7A1FB /* Third.storyboard */; };
+		BAAB806226A1013D00873F62 /* Fourth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB806126A1013D00873F62 /* Fourth.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		BA166C66269FE76800898127 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BA166C68269FEA6800898127 /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 		BA2ADEE926A0F23D00D7A1FB /* Third.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
+		BAAB806126A1013D00873F62 /* Fourth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Fourth.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				BA166C64269FE20C00898127 /* Frist.storyboard */,
 				BA166C68269FEA6800898127 /* Second.storyboard */,
 				BA2ADEE926A0F23D00D7A1FB /* Third.storyboard */,
+				BAAB806126A1013D00873F62 /* Fourth.storyboard */,
 			);
 			path = AutoLayout;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				BA166C5A269FA14500898127 /* LaunchScreen.storyboard in Resources */,
 				BA166C57269FA14500898127 /* Assets.xcassets in Resources */,
 				BA166C55269FA14100898127 /* Main.storyboard in Resources */,
+				BAAB806226A1013D00873F62 /* Fourth.storyboard in Resources */,
 				BA166C69269FEA6800898127 /* Second.storyboard in Resources */,
 				BA2ADEEA26A0F23D00D7A1FB /* Third.storyboard in Resources */,
 				BA166C65269FE20C00898127 /* Frist.storyboard in Resources */,
