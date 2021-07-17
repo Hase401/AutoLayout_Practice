@@ -15,6 +15,8 @@
 		BAAB80CC26A2BDDD00873F62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB80CA26A2BDDD00873F62 /* LaunchScreen.storyboard */; };
 		BAAB80D726A2BF0A00873F62 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB80D626A2BF0A00873F62 /* Second.storyboard */; };
 		BAAB80DB26A31A7800873F62 /* First.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB80DA26A31A7800873F62 /* First.storyboard */; };
+		BAAB80DE26A31D1100873F62 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB80DD26A31D1100873F62 /* UserInfoView.swift */; };
+		BAAB80E126A31DA200873F62 /* UserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAB80E026A31DA200873F62 /* UserInfoView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		BAAB80CD26A2BDDD00873F62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAAB80D626A2BF0A00873F62 /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 		BAAB80DA26A31A7800873F62 /* First.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = First.storyboard; sourceTree = "<group>"; };
+		BAAB80DD26A31D1100873F62 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		BAAB80E026A31DA200873F62 /* UserInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 		BAAB80BE26A2BDD800873F62 /* BasicAutoLayout_Practice2 */ = {
 			isa = PBXGroup;
 			children = (
+				BAAB80DC26A31CAD00873F62 /* CustomView */,
 				BAAB80D326A2BEC200873F62 /* OtherStoryboard */,
 				BAAB80BF26A2BDD800873F62 /* AppDelegate.swift */,
 				BAAB80C126A2BDD800873F62 /* SceneDelegate.swift */,
@@ -79,6 +84,15 @@
 				BAAB80D626A2BF0A00873F62 /* Second.storyboard */,
 			);
 			path = OtherStoryboard;
+			sourceTree = "<group>";
+		};
+		BAAB80DC26A31CAD00873F62 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				BAAB80DD26A31D1100873F62 /* UserInfoView.swift */,
+				BAAB80E026A31DA200873F62 /* UserInfoView.xib */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +155,7 @@
 				BAAB80CC26A2BDDD00873F62 /* LaunchScreen.storyboard in Resources */,
 				BAAB80C926A2BDDD00873F62 /* Assets.xcassets in Resources */,
 				BAAB80C726A2BDD800873F62 /* Main.storyboard in Resources */,
+				BAAB80E126A31DA200873F62 /* UserInfoView.xib in Resources */,
 				BAAB80D726A2BF0A00873F62 /* Second.storyboard in Resources */,
 				BAAB80DB26A31A7800873F62 /* First.storyboard in Resources */,
 			);
@@ -156,6 +171,7 @@
 				BAAB80C426A2BDD800873F62 /* MainViewController.swift in Sources */,
 				BAAB80C026A2BDD800873F62 /* AppDelegate.swift in Sources */,
 				BAAB80C226A2BDD800873F62 /* SceneDelegate.swift in Sources */,
+				BAAB80DE26A31D1100873F62 /* UserInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
