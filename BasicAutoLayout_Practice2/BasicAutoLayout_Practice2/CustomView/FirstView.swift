@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserInfoView: UIView {
+class FirstView: UIView {
 
     @IBOutlet private weak var sampleButton: UIButton!
     @IBOutlet private weak var sampleLabel: UILabel!
@@ -24,7 +24,7 @@ class UserInfoView: UIView {
     }
 
     private func nibInit() {
-        let nib = UINib(nibName: "UserInfoView", bundle: nil)
+        let nib = UINib(nibName: "FirstView", bundle: nil)
         guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
         view.frame = self.bounds
         self.addSubview(view)
