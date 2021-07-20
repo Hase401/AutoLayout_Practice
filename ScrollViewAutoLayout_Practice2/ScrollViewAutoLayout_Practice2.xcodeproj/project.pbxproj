@@ -14,7 +14,7 @@
 		BAAB80FC26A5B32C00873F62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAB80FB26A5B32C00873F62 /* Assets.xcassets */; };
 		BAAB80FF26A5B32C00873F62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB80FD26A5B32C00873F62 /* LaunchScreen.storyboard */; };
 		BAAB810826A5B52800873F62 /* First.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB810726A5B52800873F62 /* First.storyboard */; };
-		BAAB810A26A5B54300873F62 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB810926A5B54300873F62 /* Second.storyboard */; };
+		BAAB810C26A65CB600873F62 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB810B26A65CB600873F62 /* Second.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		BAAB80FE26A5B32C00873F62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAAB810026A5B32C00873F62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAAB810726A5B52800873F62 /* First.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = First.storyboard; sourceTree = "<group>"; };
-		BAAB810926A5B54300873F62 /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
+		BAAB810B26A65CB600873F62 /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 		BAAB810626A5B4DE00873F62 /* AutoLayout */ = {
 			isa = PBXGroup;
 			children = (
-				BAAB810926A5B54300873F62 /* Second.storyboard */,
+				BAAB810B26A65CB600873F62 /* Second.storyboard */,
 				BAAB810726A5B52800873F62 /* First.storyboard */,
 			);
 			path = AutoLayout;
@@ -141,7 +141,7 @@
 				BAAB80FF26A5B32C00873F62 /* LaunchScreen.storyboard in Resources */,
 				BAAB80FC26A5B32C00873F62 /* Assets.xcassets in Resources */,
 				BAAB80FA26A5B32800873F62 /* Main.storyboard in Resources */,
-				BAAB810A26A5B54300873F62 /* Second.storyboard in Resources */,
+				BAAB810C26A65CB600873F62 /* Second.storyboard in Resources */,
 				BAAB810826A5B52800873F62 /* First.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="30" width="52" height="30"/>
                                         <state key="normal" title="Second"/>
                                         <connections>
-                                            <segue destination="gIA-Lq-F9G" kind="show" id="Tei-ob-z8M"/>
+                                            <segue destination="4bx-MI-lWt" kind="show" id="MhB-kJ-Rf3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -48,15 +48,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886.95652173913049" y="93.75"/>
+            <point key="canvasLocation" x="730" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qv1-sv-l1J">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GNo-Cq-73K" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="GNo-Cq-73K" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tGt-gs-5f2">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -79,14 +79,14 @@
             <point key="canvasLocation" x="1398" y="-53"/>
         </scene>
         <!--Second-->
-        <scene sceneID="vcB-hC-Ekt">
+        <scene sceneID="xfu-FW-wMr">
             <objects>
-                <viewControllerPlaceholder storyboardName="Second" id="gIA-Lq-F9G" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ghh-Sr-3ll"/>
+                <viewControllerPlaceholder storyboardName="Second" id="4bx-MI-lWt" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Wfs-fW-EzV"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hfx-Zv-1Or" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nnf-ik-SrJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713" y="178"/>
+            <point key="canvasLocation" x="1598" y="99"/>
         </scene>
     </scenes>
     <resources>

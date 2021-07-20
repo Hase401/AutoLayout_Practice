@@ -17,6 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXs-he-dew" userLabel="BlueStopView">
+                                <rect key="frame" x="0.0" y="94" width="414" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="jhL-Hh-dxt"/>
+                                </constraints>
+                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Rd-u5-Shc">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
@@ -51,15 +58,18 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="9CV-Ch-Ejx"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="c7B-PC-goV"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXs-he-dew" userLabel="BlueStopView">
-                                <rect key="frame" x="0.0" y="94" width="414" height="100"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="jhL-Hh-dxt"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUZ-6O-D92" userLabel="GreenView">
-                                <rect key="frame" x="167" y="136" width="80" height="80"/>
+                                <rect key="frame" x="167" y="413" width="80" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTS-Xz-KhK">
+                                        <rect key="frame" x="23" y="25" width="34" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <segue destination="4O3-Dy-dik" kind="unwind" unwindAction="exitCancelWithSegue:" id="SnT-ch-hL4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="I61-G8-du8"/>
@@ -70,20 +80,21 @@
                         <viewLayoutGuide key="safeArea" id="uVZ-5b-mLn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zUZ-6O-D92" firstAttribute="centerY" secondItem="gBf-Mj-VZk" secondAttribute="centerY" id="BGz-bm-yGD"/>
-                            <constraint firstItem="uVZ-5b-mLn" firstAttribute="bottom" secondItem="6Rd-u5-Shc" secondAttribute="bottom" id="DdI-Oz-GaW"/>
-                            <constraint firstItem="uVZ-5b-mLn" firstAttribute="trailing" secondItem="6Rd-u5-Shc" secondAttribute="trailing" id="TIn-XO-i2z"/>
+                            <constraint firstItem="gBf-Mj-VZk" firstAttribute="centerY" secondItem="zUZ-6O-D92" secondAttribute="centerY" id="BGz-bm-yGD"/>
+                            <constraint firstItem="6Rd-u5-Shc" firstAttribute="bottom" secondItem="uVZ-5b-mLn" secondAttribute="bottom" id="DdI-Oz-GaW"/>
+                            <constraint firstItem="6Rd-u5-Shc" firstAttribute="trailing" secondItem="uVZ-5b-mLn" secondAttribute="trailing" id="TIn-XO-i2z"/>
                             <constraint firstItem="6Rd-u5-Shc" firstAttribute="leading" secondItem="uVZ-5b-mLn" secondAttribute="leading" id="Uf5-nI-d7z"/>
                             <constraint firstItem="tXs-he-dew" firstAttribute="top" secondItem="uVZ-5b-mLn" secondAttribute="top" constant="50" id="Xqc-qA-tEP"/>
                             <constraint firstItem="tXs-he-dew" firstAttribute="leading" secondItem="uVZ-5b-mLn" secondAttribute="leading" id="fOl-rd-nZu"/>
                             <constraint firstItem="6Rd-u5-Shc" firstAttribute="top" secondItem="uVZ-5b-mLn" secondAttribute="top" id="hEq-N0-2MJ"/>
-                            <constraint firstItem="zUZ-6O-D92" firstAttribute="centerX" secondItem="gBf-Mj-VZk" secondAttribute="centerX" id="inp-ee-X5a"/>
+                            <constraint firstItem="gBf-Mj-VZk" firstAttribute="centerX" secondItem="zUZ-6O-D92" secondAttribute="centerX" id="inp-ee-X5a"/>
                             <constraint firstItem="tXs-he-dew" firstAttribute="trailing" secondItem="uVZ-5b-mLn" secondAttribute="trailing" id="pQG-p1-TdA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1T3-IT-7zD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJg-F9-BNM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="4O3-Dy-dik" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1398" y="-53"/>
         </scene>
