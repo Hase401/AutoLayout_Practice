@@ -15,6 +15,7 @@
 		BAAB80FF26A5B32C00873F62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB80FD26A5B32C00873F62 /* LaunchScreen.storyboard */; };
 		BAAB810826A5B52800873F62 /* First.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB810726A5B52800873F62 /* First.storyboard */; };
 		BAAB810C26A65CB600873F62 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB810B26A65CB600873F62 /* Second.storyboard */; };
+		BAAB810E26A83FBB00873F62 /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB810D26A83FBB00873F62 /* Third.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BAAB810026A5B32C00873F62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAAB810726A5B52800873F62 /* First.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = First.storyboard; sourceTree = "<group>"; };
 		BAAB810B26A65CB600873F62 /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
+		BAAB810D26A83FBB00873F62 /* Third.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		BAAB810626A5B4DE00873F62 /* AutoLayout */ = {
 			isa = PBXGroup;
 			children = (
+				BAAB810D26A83FBB00873F62 /* Third.storyboard */,
 				BAAB810B26A65CB600873F62 /* Second.storyboard */,
 				BAAB810726A5B52800873F62 /* First.storyboard */,
 			);
@@ -142,6 +145,7 @@
 				BAAB80FC26A5B32C00873F62 /* Assets.xcassets in Resources */,
 				BAAB80FA26A5B32800873F62 /* Main.storyboard in Resources */,
 				BAAB810C26A65CB600873F62 /* Second.storyboard in Resources */,
+				BAAB810E26A83FBB00873F62 /* Third.storyboard in Resources */,
 				BAAB810826A5B52800873F62 /* First.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
