@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="413-5u-DaB">
-                                <rect key="frame" x="181" y="418" width="52" height="60"/>
+                                <rect key="frame" x="181" y="403" width="52" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9b-kt-KHw">
                                         <rect key="frame" x="0.0" y="0.0" width="52" height="30"/>
@@ -32,6 +32,13 @@
                                         <state key="normal" title="Second"/>
                                         <connections>
                                             <segue destination="4bx-MI-lWt" kind="show" id="MhB-kJ-Rf3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvO-jv-KNJ">
+                                        <rect key="frame" x="0.0" y="60" width="52" height="30"/>
+                                        <state key="normal" title="Third"/>
+                                        <connections>
+                                            <segue destination="Itg-Ff-6Wg" kind="show" id="9vb-TP-cY1"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -87,6 +94,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nnf-ik-SrJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1598" y="99"/>
+        </scene>
+        <!--Third-->
+        <scene sceneID="zMb-5b-PCc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Third" id="Itg-Ff-6Wg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jLk-Z9-lWm"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qoe-RM-f5B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1639" y="228"/>
         </scene>
     </scenes>
     <resources>
