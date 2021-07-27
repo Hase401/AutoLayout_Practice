@@ -10,10 +10,6 @@ import UIKit
 private var dataSourceKey: Void?
 
 extension SecondDefaultSwitcherView: SwitcherDelegate {
-    // なんかプロトコルで追加されたもの
-    public func reloadData() {
-
-    }
 
     public weak var ssDataSource: SwitcherDataSource? {
         get {
