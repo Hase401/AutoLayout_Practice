@@ -21,10 +21,6 @@ public struct SwitcherConfig {
     public var indicatorWidth: CGFloat
     public var indicatorHeight: CGFloat
     public var indicatorColor: UIColor
-    public var badgeHeightForPointType: CGFloat
-    public var badgeHeightForCountType: CGFloat
-    public var badgeHeightForCustomType: CGFloat
-    public var badgeFontForCountType: UIFont
 
     public init(type: SwitcherType = .segement,
                 horizontalMargin: CGFloat = 16,
@@ -35,11 +31,7 @@ public struct SwitcherConfig {
                 selectedTitleColor: UIColor = UIColor.darkGray,
                 indicatorWidth: CGFloat = 30,
                 indicatorHeight: CGFloat = 2,
-                indicatorColor: UIColor = UIColor.darkGray,
-                badgeHeightForPointType: CGFloat = 9,
-                badgeHeightForCountType: CGFloat = 15,
-                badgeHeightForCustomType: CGFloat = 14,
-                badgeFontForCountType: UIFont = UIFont.systemFont(ofSize: 10, weight: .regular)) {
+                indicatorColor: UIColor = UIColor.darkGray) {
         self.type = type
         self.horizontalMargin = horizontalMargin
         self.horizontalSpace = horizontalSpace
@@ -50,10 +42,6 @@ public struct SwitcherConfig {
         self.indicatorWidth = indicatorWidth
         self.indicatorHeight = indicatorHeight
         self.indicatorColor = indicatorColor
-        self.badgeHeightForPointType = badgeHeightForPointType
-        self.badgeHeightForCountType = badgeHeightForCountType
-        self.badgeHeightForCustomType = badgeHeightForCustomType
-        self.badgeFontForCountType = badgeFontForCountType
     }
 
 }

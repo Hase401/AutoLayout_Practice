@@ -14,8 +14,6 @@ public enum SwitcherType {
 
 public protocol DefaultSwitcherViewDelegate: AnyObject {
     var titlesInSegementSlideSwitcherView: [String] { get }
-
-    func segementSwitcherView(_ segementSlideSwitcherView: SecondDefaultSwitcherView, didSelectAtIndex index: Int, animated: Bool)
 }
 
 public class SecondDefaultSwitcherView: UIView {
@@ -50,9 +48,6 @@ public class SecondDefaultSwitcherView: UIView {
 
     private func setup() {
         addSubview(scrollView)
-//        if #available(iOS 11.0, *) {
-//            scrollView.contentInsetAdjustmentBehavior = .never
-//        }
         // これがなかったらview階層に表示されなかった？　→これをいれることでScrollViewについて成約が貼れるようになった
         scrollView.constraintToSuperview()
         scrollView.showsHorizontalScrollIndicator = false
@@ -68,12 +63,12 @@ public class SecondDefaultSwitcherView: UIView {
         updateSelectedIndex()
     }
 
-    // 【メモ】これ勝手に追加したけど、結局なにこれ
-//    public func reloadData() {
-//        reloadSubViews()
+    public func reloadData() {
+        reloadSubViews()
+        /// 削除⭕
 //        reloadContents()
 //        reloadDataWithSelectedIndex()
-//    }
+    }
 
     public func selectItem(at index: Int, animated: Bool) {
         updateSelectedButton(at: index, animated: animated)
@@ -107,7 +102,6 @@ extension SecondDefaultSwitcherView {
         titleButtons.removeAll()
         indicatorView.removeFromSuperview()
         indicatorView.frame = .zero
-        scrollView.isScrollEnabled = innerConfig.type == .segement
         innerConfig = config
         guard let titles = delegate?.titlesInSegementSlideSwitcherView,
             !titles.isEmpty else {
@@ -208,7 +202,6 @@ extension SecondDefaultSwitcherView {
             }
         }
         self.selectedIndex = index
-        delegate?.segementSwitcherView(self, didSelectAtIndex: index, animated: animated)
     }
 
     @objc
