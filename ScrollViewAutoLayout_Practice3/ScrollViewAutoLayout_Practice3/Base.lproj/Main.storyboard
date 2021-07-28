@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="777" y="94"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Second Base View Controller-->
         <scene sceneID="hvW-WZ-pd4">
             <objects>
-                <viewController id="H0q-Ke-8ZL" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController id="H0q-Ke-8ZL" customClass="SecondBaseViewController" customModule="ScrollViewAutoLayout_Practice3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DkE-oD-40t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
