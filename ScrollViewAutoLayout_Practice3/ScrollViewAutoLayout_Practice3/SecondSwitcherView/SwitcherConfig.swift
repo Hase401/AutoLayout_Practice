@@ -22,7 +22,7 @@ public struct SwitcherConfig {
     public var indicatorHeight: CGFloat
     public var indicatorColor: UIColor
 
-    public init(type: SwitcherType = .segement,
+    public init(type: SwitcherType = .tab,
                 horizontalMargin: CGFloat = 16,
                 horizontalSpace: CGFloat = 32,
                 normalTitleFont: UIFont = UIFont.systemFont(ofSize: 15),

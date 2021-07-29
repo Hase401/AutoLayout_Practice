@@ -16,15 +16,17 @@ public class SecondSlideScrollView: UIScrollView, UIGestureRecognizerDelegate {
         super.init(frame: .zero)
     }
 
+    // 【エラー】'required' initializer 'init(coder:)' must be provided by subclass of 'UIScrollView'
     internal required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if let otherGestureRecognizers = otherGestureRecognizers, otherGestureRecognizers.contains(otherGestureRecognizer) {
-            return false
-        }
-        return true
-    }
+    /// 削除⭕
+//    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        if let otherGestureRecognizers = otherGestureRecognizers, otherGestureRecognizers.contains(otherGestureRecognizer) {
+//            return false
+//        }
+//        return true
+//    }
 
 }

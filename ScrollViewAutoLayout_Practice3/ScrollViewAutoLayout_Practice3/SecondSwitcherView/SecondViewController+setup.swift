@@ -10,9 +10,6 @@ import UIKit
 extension SecondViewController {
 
     internal func setup() {
-        view.backgroundColor = .white
-        extendedLayoutIncludesOpaqueBars = true
-        edgesForExtendedLayout = []
         // 【メモ】なぜかsetupSegementSlideViewsをコメントアウトしていたから、nilになっていたかも
         setupSegementSlideViews()
         setupSegementSlideScrollView()
@@ -22,9 +19,12 @@ extension SecondViewController {
     private func setupSegementSlideViews() {
         switcherView = segementSlideSwitcherView() // これはメソッド
         var gestureRecognizers: [UIGestureRecognizer] = []
-        if let gestureRecognizersInScrollView = switcherView.ssScrollView.gestureRecognizers {
-            gestureRecognizers.append(contentsOf: gestureRecognizersInScrollView)
-        }
+
+        // これは削除しても平気
+//        if let gestureRecognizersInScrollView = switcherView.ssScrollView.gestureRecognizers {
+//            gestureRecognizers.append(contentsOf: gestureRecognizersInScrollView)
+//        }
+
         // 【メモ】これでnilじゃなくなるかも
         scrollViews = SecondSlideScrollView(otherGestureRecognizers: gestureRecognizers)
     }
@@ -36,12 +36,13 @@ extension SecondViewController {
     private func setupSegementSlideScrollView() {
         view.addSubview(scrollViews)
         scrollViews.constraintToSuperview()
-        scrollViews.backgroundColor = .white
-        scrollViews.showsHorizontalScrollIndicator = false
-        scrollViews.showsVerticalScrollIndicator = false
-        scrollViews.isPagingEnabled = false
-        scrollViews.isScrollEnabled = true
-        scrollViews.scrollsToTop = true
+        // 【疑問】ほんとに関係ないのかわからないけど、削除しても動く
+//        scrollViews.backgroundColor = .white
+//        scrollViews.showsHorizontalScrollIndicator = false
+//        scrollViews.showsVerticalScrollIndicator = false
+//        scrollViews.isPagingEnabled = false
+//        scrollViews.isScrollEnabled = true
+//        scrollViews.scrollsToTop = true
         // 削除⭕　後々使うかも
 //        scrollView.delegate = self
     }
@@ -51,6 +52,7 @@ extension SecondViewController {
         /// これは重要そうで必須
         switcherView.translatesAutoresizingMaskIntoConstraints = false
 
+        // 以下の必要
         if switcherView.leadingConstraint == nil {
             switcherView.leadingConstraint = switcherView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         }
