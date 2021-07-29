@@ -13,5 +13,4 @@ final public class SwitcherDataSourceWeakBox {
     public init(_ value: SwitcherDataSource?) {
         unbox = value
     }
-
 }

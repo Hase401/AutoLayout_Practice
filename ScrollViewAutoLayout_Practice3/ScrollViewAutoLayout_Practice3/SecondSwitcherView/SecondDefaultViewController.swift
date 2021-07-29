@@ -23,7 +23,8 @@ open class SecondDefaultViewController: SecondViewController {
     }
 
     open var switcherConfig: SwitcherConfig {
-        return SwitcherConfig.shared
+//        return SwitcherConfig.shared
+        return ConfigManager.shared.switcherConfig // 初期から.tabにした
     }
 
     open override var switcherHeight: CGFloat {
@@ -31,7 +32,15 @@ open class SecondDefaultViewController: SecondViewController {
     }
 
     open var titlesInSwitcher: [String] {
-        return []
+//        return []
+        return ["Swift", "Ruby", "Realm", "Firebase"]
+    }
+
+    // 追加
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        defaultSelectedIndex = 0
+        reloadData()
     }
 
 }

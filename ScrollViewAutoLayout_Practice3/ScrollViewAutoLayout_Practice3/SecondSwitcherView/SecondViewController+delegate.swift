@@ -7,17 +7,6 @@
 
 import UIKit
 
-extension SecondViewController: UIScrollViewDelegate {
-
-    // 【疑問】空のメソッドを読んでいるから実際delegateいらなそう
-    public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-//        resetScrollViewStatus()
-//        resetCurrentChildViewControllerContentOffsetY()
-        return true
-    }
-
-}
-
 extension SecondViewController: SegementSlideContentDelegate {
 
     public var segementSlideContentScrollViewCount: Int {

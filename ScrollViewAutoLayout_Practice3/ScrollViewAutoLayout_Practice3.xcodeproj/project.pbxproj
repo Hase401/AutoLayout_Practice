@@ -27,10 +27,8 @@
 		BA0DC85B26ACE76100171F3D /* SecondSlideScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC85A26ACE76100171F3D /* SecondSlideScrollView.swift */; };
 		BA0DC85D26ACE83400171F3D /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC85C26ACE83400171F3D /* UIView+Constraint.swift */; };
 		BA88821126AD1F5A0092A4A0 /* ConfigManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88821026AD1F5A0092A4A0 /* ConfigManger.swift */; };
-		BA88821326AD24B10092A4A0 /* SecondBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88821226AD24B10092A4A0 /* SecondBaseViewController.swift */; };
 		BA88821526AE2BC60092A4A0 /* SegementSlideContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88821426AE2BC60092A4A0 /* SegementSlideContentView.swift */; };
 		BA88821726AE2C8D0092A4A0 /* SecondViewController+delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88821626AE2C8C0092A4A0 /* SecondViewController+delegate.swift */; };
-		BA88822126B04BCC0092A4A0 /* SecondViewController+ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88822026B04BCC0092A4A0 /* SecondViewController+ex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,10 +54,8 @@
 		BA0DC85A26ACE76100171F3D /* SecondSlideScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSlideScrollView.swift; sourceTree = "<group>"; };
 		BA0DC85C26ACE83400171F3D /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
 		BA88821026AD1F5A0092A4A0 /* ConfigManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManger.swift; sourceTree = "<group>"; };
-		BA88821226AD24B10092A4A0 /* SecondBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondBaseViewController.swift; sourceTree = "<group>"; };
 		BA88821426AE2BC60092A4A0 /* SegementSlideContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegementSlideContentView.swift; sourceTree = "<group>"; };
 		BA88821626AE2C8C0092A4A0 /* SecondViewController+delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondViewController+delegate.swift"; sourceTree = "<group>"; };
-		BA88822026B04BCC0092A4A0 /* SecondViewController+ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondViewController+ex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +88,6 @@
 		BA0DC82D26AC3C0200171F3D /* ScrollViewAutoLayout_Practice3 */ = {
 			isa = PBXGroup;
 			children = (
-				BA88821226AD24B10092A4A0 /* SecondBaseViewController.swift */,
 				BA88820F26AD1F480092A4A0 /* Models */,
 				BA0DC84326AC3C4900171F3D /* SecondSwitcherView */,
 				BA0DC84226AC3C3200171F3D /* FirstSwitcherView */,
@@ -129,7 +124,6 @@
 				BA0DC85826ACE67100171F3D /* SwitcherDataSourceWeakBox.swift */,
 				BA0DC84E26AC3FF200171F3D /* SecondViewController.swift */,
 				BA88821626AE2C8C0092A4A0 /* SecondViewController+delegate.swift */,
-				BA88822026B04BCC0092A4A0 /* SecondViewController+ex.swift */,
 				BA0DC85226AC40AC00171F3D /* SecondViewController+setup.swift */,
 				BA0DC84C26AC3F8600171F3D /* String+Bounding.swift */,
 				BA0DC85C26ACE83400171F3D /* UIView+Constraint.swift */,
@@ -226,9 +220,7 @@
 				BA0DC85126AC405600171F3D /* SwitcherDelegate.swift in Sources */,
 				BA0DC83326AC3C0200171F3D /* ViewController.swift in Sources */,
 				BA88821526AE2BC60092A4A0 /* SegementSlideContentView.swift in Sources */,
-				BA88821326AD24B10092A4A0 /* SecondBaseViewController.swift in Sources */,
 				BA0DC82F26AC3C0200171F3D /* AppDelegate.swift in Sources */,
-				BA88822126B04BCC0092A4A0 /* SecondViewController+ex.swift in Sources */,
 				BA0DC84F26AC3FF200171F3D /* SecondViewController.swift in Sources */,
 				BA0DC85926ACE67100171F3D /* SwitcherDataSourceWeakBox.swift in Sources */,
 				BA0DC84526AC3E1900171F3D /* FirstSwitcherView.swift in Sources */,

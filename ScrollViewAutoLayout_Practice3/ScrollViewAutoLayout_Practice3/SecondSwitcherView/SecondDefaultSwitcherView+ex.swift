@@ -34,8 +34,8 @@ extension SecondDefaultSwitcherView: SwitcherDelegate {
         return selectedIndex
     }
 
-    public var ssScrollView: UIScrollView {
-        return scrollView
-    }
+//    public var ssScrollView: UIScrollView {
+//        return scrollView
+//    }
 
 }

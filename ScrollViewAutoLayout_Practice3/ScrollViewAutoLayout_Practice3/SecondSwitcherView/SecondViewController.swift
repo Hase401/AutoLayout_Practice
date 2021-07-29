@@ -12,6 +12,7 @@ import UIKit
 //    case child
 //}
 
+// 【メモ】一番の基本的な部分
 // 【メモ】ここをopenにするとエラーがなくなった
 open class SecondViewController: UIViewController {
 
@@ -73,10 +74,11 @@ open class SecondViewController: UIViewController {
         switcherView.reloadData()
     }
 
-    /// select one item by index
-    public func selectItem(at index: Int, animated: Bool) {
-        switcherView.selectItem(at: index, animated: animated)
-    }
+    // 削除⭕
+//    /// select one item by index
+//    public func selectItem(at index: Int, animated: Bool) {
+//        switcherView.selectItem(at: index, animated: animated)
+//    }
 
 }
 
