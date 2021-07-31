@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// 【注意】これだけは必要みたい🔺
-public protocol SegementSlideContentDelegate: AnyObject {
-    var segementSlideContentScrollViewCount: Int { get }
-}
+/// 【注意】これだけは必要じゃないみたい削除⭕
+//public protocol SegementSlideContentDelegate: AnyObject {
+//    var segementSlideContentScrollViewCount: Int { get }
+//}

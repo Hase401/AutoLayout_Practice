@@ -1,95 +1,70 @@
 //
-//  SecondSwitcherView.swift
+//  MyDefaultSwitcherView.swift
 //  ScrollViewAutoLayout_Practice3
 //
-//  Created by 長谷川孝太 on 2021/07/24.
+//  Created by 長谷川孝太 on 2021/07/31.
 //
 
 import UIKit
 
-public enum SwitcherType {
-    case tab
-    case segement
-}
+// カスタムViewなのでイニシャライザが必要？
+class MyDefaultSwitcherView: UIView {
 
-public protocol DefaultSwitcherViewDelegate: AnyObject {
-    var titlesInSegementSlideSwitcherView: [String] { get }
-}
-
-public class SecondDefaultSwitcherView: UIView {
-
-    public private(set) var scrollView = UIScrollView()
+    var scrollView = UIScrollView()
     private let indicatorView = UIView()
     private var titleButtons: [UIButton] = []
-    private var innerConfig: SwitcherConfig = SwitcherConfig.shared
 
     /// you should call `reloadData()` after set this property.
-    open var defaultSelectedIndex: Int?
+    // 【疑問】どこでこのプロパティをセットしているのか
+    var defaultSelectedIndex: Int?
+    var selectedIndex: Int?
 
-    public private(set) var selectedIndex: Int?
-    public weak var delegate: DefaultSwitcherViewDelegate?
-
-    /// you must call `reloadData()` to make it work, after the assignment.
-    public var config: SwitcherConfig = SwitcherConfig.shared
-
-    public override var intrinsicContentSize: CGSize {
+    // 親のUIViewのプロパティ
+    override var intrinsicContentSize: CGSize {
         return scrollView.contentSize
     }
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
 
     private func setup() {
-        addSubview(scrollView)
-        // これがなかったらview階層に表示されなかった？　→これをいれることでScrollViewについて成約が貼れるようになった
+        addSubview(scrollView) // 一番上にscrollViewがある
         scrollView.constraintToSuperview()
+        // 水平スクロールインジケータが表示されているかどうかを制御するブール値
         scrollView.showsHorizontalScrollIndicator = false
+        // 垂直スクロールインジケータが表示されているかどうかを制御するブール値
         scrollView.showsVerticalScrollIndicator = false
+        // 上部へのスクロールジェスチャーを有効にするかどうかを制御するブール値
         scrollView.scrollsToTop = false
         scrollView.backgroundColor = .clear
-        backgroundColor = .white
+        backgroundColor = .white // self.backgroundColorかな
     }
 
-    // サブクラスは、これをオーバーライドして、サブビューのより正確なレイアウトを行う。
-    // オーバーライドするのは、サブビューの自動サイズ調整や制約ベースの動作が、希望する動作を提供しない場合に限る。
     public override func layoutSubviews() {
         super.layoutSubviews()
-        reloadContents()
-        updateSelectedIndex()
+//        reloadContents()
+//        updateSelectedIndex()
     }
 
     public func reloadData() {
-        reloadSubViews()
-        /// 削除⭕
-//        reloadContents()
-//        reloadDataWithSelectedIndex()
+//        reloadSubViews()
     }
 
-    // 【メモ】これがないとButtonをタップして変化がない
     // 【疑問】どこで読んでいるのか→@objcでボタンから読んでいる // 2ドデマでは？
     public func selectItem(at index: Int, animated: Bool) {
-        updateSelectedButton(at: index, animated: animated)
+//        updateSelectedButton(at: index, animated: animated)
     }
-
+    
 }
 
 extension SecondDefaultSwitcherView {
-
-// 削除⭕
-//    private func reloadDataWithSelectedIndex() {
-//        guard let index = selectedIndex else {
-//            return
-//        }
-//        selectedIndex = nil
-//        updateSelectedButton(at: index, animated: false)
-//    }
 
     private func updateSelectedIndex() {
         if let index = selectedIndex  {
@@ -219,3 +194,4 @@ extension SecondDefaultSwitcherView {
     }
 
 }
+

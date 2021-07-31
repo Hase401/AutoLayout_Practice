@@ -123,10 +123,13 @@ internal extension UIView {
 internal extension UIView {
 
     func constraintToSuperview() {
+        // superViewがnilだったらreturnされる(アンラップ)
         guard let superview = superview else {
             return
         }
+        // AutoLayout使いたいときはデフォルトでtureなのでfalseにする必要がある
         translatesAutoresizingMaskIntoConstraints = false
+        // superViewと同じように広げる
         topConstraint = topAnchor.constraint(equalTo: superview.topAnchor)
         bottomConstraint = bottomAnchor.constraint(equalTo: superview.bottomAnchor)
         leadingConstraint = leadingAnchor.constraint(equalTo: superview.leadingAnchor)

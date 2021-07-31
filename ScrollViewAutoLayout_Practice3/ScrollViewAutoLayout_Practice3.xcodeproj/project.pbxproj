@@ -29,6 +29,7 @@
 		BA88821126AD1F5A0092A4A0 /* ConfigManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88821026AD1F5A0092A4A0 /* ConfigManger.swift */; };
 		BA88821526AE2BC60092A4A0 /* SegementSlideContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88821426AE2BC60092A4A0 /* SegementSlideContentView.swift */; };
 		BA88821726AE2C8D0092A4A0 /* SecondViewController+delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88821626AE2C8C0092A4A0 /* SecondViewController+delegate.swift */; };
+		BA88826C26B5889C0092A4A0 /* MyDefaultSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88826B26B5889C0092A4A0 /* MyDefaultSwitcherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		BA88821026AD1F5A0092A4A0 /* ConfigManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManger.swift; sourceTree = "<group>"; };
 		BA88821426AE2BC60092A4A0 /* SegementSlideContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegementSlideContentView.swift; sourceTree = "<group>"; };
 		BA88821626AE2C8C0092A4A0 /* SecondViewController+delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondViewController+delegate.swift"; sourceTree = "<group>"; };
+		BA88826B26B5889C0092A4A0 /* MyDefaultSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDefaultSwitcherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				BA88820F26AD1F480092A4A0 /* Models */,
+				BA88826D26B594400092A4A0 /* Extension */,
+				BA88826A26B588420092A4A0 /* MySwitcherView */,
 				BA0DC84326AC3C4900171F3D /* SecondSwitcherView */,
 				BA0DC84226AC3C3200171F3D /* FirstSwitcherView */,
 				BA0DC82E26AC3C0200171F3D /* AppDelegate.swift */,
@@ -125,8 +129,6 @@
 				BA0DC84E26AC3FF200171F3D /* SecondViewController.swift */,
 				BA88821626AE2C8C0092A4A0 /* SecondViewController+delegate.swift */,
 				BA0DC85226AC40AC00171F3D /* SecondViewController+setup.swift */,
-				BA0DC84C26AC3F8600171F3D /* String+Bounding.swift */,
-				BA0DC85C26ACE83400171F3D /* UIView+Constraint.swift */,
 			);
 			path = SecondSwitcherView;
 			sourceTree = "<group>";
@@ -137,6 +139,23 @@
 				BA88821026AD1F5A0092A4A0 /* ConfigManger.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BA88826A26B588420092A4A0 /* MySwitcherView */ = {
+			isa = PBXGroup;
+			children = (
+				BA88826B26B5889C0092A4A0 /* MyDefaultSwitcherView.swift */,
+			);
+			path = MySwitcherView;
+			sourceTree = "<group>";
+		};
+		BA88826D26B594400092A4A0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BA0DC85C26ACE83400171F3D /* UIView+Constraint.swift */,
+				BA0DC84C26AC3F8600171F3D /* String+Bounding.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +237,7 @@
 				BA0DC85326AC40AC00171F3D /* SecondViewController+setup.swift in Sources */,
 				BA0DC84D26AC3F8600171F3D /* String+Bounding.swift in Sources */,
 				BA0DC85126AC405600171F3D /* SwitcherDelegate.swift in Sources */,
+				BA88826C26B5889C0092A4A0 /* MyDefaultSwitcherView.swift in Sources */,
 				BA0DC83326AC3C0200171F3D /* ViewController.swift in Sources */,
 				BA88821526AE2BC60092A4A0 /* SegementSlideContentView.swift in Sources */,
 				BA0DC82F26AC3C0200171F3D /* AppDelegate.swift in Sources */,
