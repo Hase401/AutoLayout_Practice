@@ -9,6 +9,7 @@ import UIKit
 
 open class SecondDefaultViewController: SecondViewController {
 
+    // ここで追加しているのがSecondDefaultSwitcherView
     private let defaultSwitcherView = SecondDefaultSwitcherView()
 
     public override func segementSlideSwitcherView() -> SwitcherDelegate {

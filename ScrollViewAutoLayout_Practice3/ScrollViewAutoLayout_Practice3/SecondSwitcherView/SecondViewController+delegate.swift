@@ -7,10 +7,10 @@
 
 import UIKit
 
-extension SecondViewController: SegementSlideContentDelegate {
-
-    public var segementSlideContentScrollViewCount: Int {
-        return switcherView.ssDataSource?.titles.count ?? 0
-    }
-
-}
+//extension SecondViewController: SegementSlideContentDelegate {
+//
+//    public var segementSlideContentScrollViewCount: Int {
+//        return switcherView.ssDataSource?.titles.count ?? 0
+//    }
+//
+//}
