@@ -8,11 +8,18 @@
 import UIKit
 
 // カスタムViewなのでイニシャライザが必要？
-class MyDefaultSwitcherView: UIView {
+class MySwitcherView: UIView {
 
     var scrollView = UIScrollView()
     private let indicatorView = UIView()
+    // 【疑問】どこで中身を代入しているのか
     private var titleButtons: [UIButton] = []
+    // 【疑問】classではなく、structで共通化する方法どうするんだっけ？(あきおさんがやっていた気がする)
+    private var innerConfig: MySwitcherConfig = MySwitcherConfig()
+
+    // 【メモ】プロトコルのdelegateでプロパティだけであんまりメリットがわからなかったので、自分でここにおいてみる
+    // 【メモ】オプショナル型にしないとguard letが使えない
+    var titlesInSegementSlideSwitcherView: [String]?
 
     /// you should call `reloadData()` after set this property.
     // 【疑問】どこでこのプロパティをセットしているのか
@@ -64,7 +71,7 @@ class MyDefaultSwitcherView: UIView {
     
 }
 
-extension SecondDefaultSwitcherView {
+extension MySwitcherView {
 
     private func updateSelectedIndex() {
         if let index = selectedIndex  {
@@ -75,18 +82,29 @@ extension SecondDefaultSwitcherView {
     }
 
     private func reloadSubViews() {
+        /// 初期化？
         for titleButton in titleButtons {
+            // スーパービューおよびウィンドウからビューのリンクを解除し、レスポンダチェーンからビューを削除
             titleButton.removeFromSuperview()
             titleButton.frame = .zero
         }
+        // 【疑問メモ】コレクションからすべての要素を削除
         titleButtons.removeAll()
         indicatorView.removeFromSuperview()
         indicatorView.frame = .zero
-        innerConfig = config
-        guard let titles = delegate?.titlesInSegementSlideSwitcherView,
-            !titles.isEmpty else {
+        // 削除？
+//        innerConfig = config
+//        guard let titles = delegate?.titlesInSegementSlideSwitcherView,
+//            !titles.isEmpty else {
+//            return
+//        }
+        guard let titles = titlesInSegementSlideSwitcherView,
+              !titles.isEmpty else {
             return
         }
+
+        /// 始めから自分で設定？
+        // Returns a sequence of pairs (n, x), where n represents a consecutive integer starting at zero and x represents an element of the sequence.
         for (index, title) in titles.enumerated() {
             let button = UIButton(type: .custom)
             button.clipsToBounds = false
@@ -100,6 +118,7 @@ extension SecondDefaultSwitcherView {
             scrollView.addSubview(button)
             titleButtons.append(button)
         }
+        // 【疑問メモ】indicatorViewはどこに表示するかの成約がまだ
         scrollView.addSubview(indicatorView)
         indicatorView.layer.masksToBounds = true
         indicatorView.layer.cornerRadius = innerConfig.indicatorHeight/2
