@@ -12,6 +12,7 @@ open class SecondDefaultViewController: SecondViewController {
     // ここで追加しているのがSecondDefaultSwitcherView
     private let defaultSwitcherView = SecondDefaultSwitcherView()
 
+    // 【疑問】このDelegateはなぜ必要なのか？
     public override func segementSlideSwitcherView() -> SwitcherDelegate {
         defaultSwitcherView.delegate = self
         defaultSwitcherView.ssDataSource = self
@@ -32,6 +33,10 @@ open class SecondDefaultViewController: SecondViewController {
         return 44
     }
 
+    // ①titlesInSwitcher(SecondDefaultViewController: SecondViewController)
+    // →②titles(SecondDefaultViewController: SwitcherDataSource)
+    // →③titlesInSegementSlideSwitcherView(SecondDefaultViewController: DefaultSwitcherViewDelegate)
+    // switcherView.ssDataSource?.title(SwithcerDelegateの中にあるSwitcherDataSourceのtitles)
     open var titlesInSwitcher: [String] {
 //        return []
         return ["Swift", "Ruby", "Realm", "Firebase"]
@@ -40,6 +45,7 @@ open class SecondDefaultViewController: SecondViewController {
     // 追加
     open override func viewDidLoad() {
         super.viewDidLoad()
+        // ここで最初で最後のdefaultSelectedIndexを設定していたわ笑笑
         defaultSelectedIndex = 0
         reloadData()
     }
@@ -60,7 +66,11 @@ extension SecondDefaultViewController: SwitcherDataSource {
 
 extension SecondDefaultViewController: DefaultSwitcherViewDelegate {
 
+    // このプロパティをdelegateとして設定している理由は？
+    // 
     public var titlesInSegementSlideSwitcherView: [String] {
+        // このtitleには上にあるようにtitlesInSwitcherがある
+        // nilだったら[]を返す
         return switcherView.ssDataSource?.titles ?? []
     }
 

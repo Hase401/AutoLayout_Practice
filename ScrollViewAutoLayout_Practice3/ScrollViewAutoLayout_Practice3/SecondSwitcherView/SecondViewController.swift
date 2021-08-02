@@ -24,12 +24,14 @@ open class SecondViewController: UIViewController {
     public var switcherHeight: CGFloat {
         return switcherView.ssDataSource?.height ?? 44
     }
-
-    public var currentIndex: Int? {
-        return switcherView.ssSelectedIndex
-    }
+//
+//    public var currentIndex: Int? {
+//        return switcherView.ssSelectedIndex
+//    }
 
     /// you should call `reloadData()` after set this property.
+    // ここで最初のdefaultSelectedIndexを入れている？
+    // defaultSelectedIndexに再代入しているところは今のところない！！
     open var defaultSelectedIndex: Int? {
         didSet {
             switcherView.ssDefaultSelectedIndex = defaultSelectedIndex

@@ -21,8 +21,10 @@ extension SecondDefaultSwitcherView: SwitcherDelegate {
         }
     }
 
+    // ここでextensionでSecondDefaultSwitcherViewにSwitcherDelegateを継承している
     public var ssDefaultSelectedIndex: Int? {
         get {
+            // 【疑問】どこかでnilだったdefaultSelectedIndexに値を入れている？
             return defaultSelectedIndex
         }
         set {
