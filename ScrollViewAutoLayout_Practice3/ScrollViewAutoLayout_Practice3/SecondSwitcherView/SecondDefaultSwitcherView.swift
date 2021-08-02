@@ -25,13 +25,16 @@ public class SecondDefaultSwitcherView: UIView {
 
     /// you should call `reloadData()` after set this property.
     open var defaultSelectedIndex: Int?
-
     public private(set) var selectedIndex: Int?
     public weak var delegate: DefaultSwitcherViewDelegate?
 
     /// you must call `reloadData()` to make it work, after the assignment.
     public var config: SwitcherConfig = SwitcherConfig.shared
 
+    // 【疑問】これがなくても表示はできる→このプロパティはSecondDefaultSwitcherViewの固有サイズを変更するためのもの
+    // ビュー階層を見るとあってもなくても紫の警告が出る
+    // Layout Issues: Vertical position is ambiguous for SegementSlideDefaultSwitcherView.
+    // storyboardにscrollViewだけを表示する方法でやってみると何かわかりそう
     public override var intrinsicContentSize: CGSize {
         return scrollView.contentSize
     }
@@ -74,7 +77,10 @@ public class SecondDefaultSwitcherView: UIView {
 
     // 【メモ】これがないとButtonをタップして変化がない
     // 【疑問】どこで読んでいるのか→@objcでボタンから読んでいる // 2ドデマでは？
+    //  2回目以降のupdateSeletctedButton()はselectItem()を設定しているButtonのAddTargetから
     public func selectItem(at index: Int, animated: Bool) {
+        // 【疑問】ここのindexはどこから来たもの？
+        // 恐らく、selectItemの引数から来たもの
         updateSelectedButton(at: index, animated: animated)
     }
 
@@ -82,7 +88,7 @@ public class SecondDefaultSwitcherView: UIView {
 
 extension SecondDefaultSwitcherView {
 
-// 削除⭕
+// 削除?
 //    private func reloadDataWithSelectedIndex() {
 //        guard let index = selectedIndex else {
 //            return
@@ -92,21 +98,30 @@ extension SecondDefaultSwitcherView {
 //    }
 
     private func updateSelectedIndex() {
+        // nilだったとしても処理を終わらせない
         if let index = selectedIndex  {
+            // nilじゃなかったら
+            print(selectedIndex)
             updateSelectedButton(at: index, animated: false)
         } else if let index = defaultSelectedIndex {
+            // selectedIndexがnilでdefaultSelectedIndexがnilじゃなかったら
+            print(defaultSelectedIndex)
+            // 一番最初はdefaultSelectedIndexが0でその0をindexにしているが、
+            // 2回目からはselectedIndexにnilではなく0が入っているはずなので、
+            // 上の処理が呼ばれ、selectedIndexがindexとなり引数として渡される仕組み、、ではないらしい
             updateSelectedButton(at: index, animated: false)
         }
     }
 
     private func reloadSubViews() {
-        for titleButton in titleButtons {
-            titleButton.removeFromSuperview()
-            titleButton.frame = .zero
-        }
-        titleButtons.removeAll()
-        indicatorView.removeFromSuperview()
-        indicatorView.frame = .zero
+        // 削除?🔺 // 何のためにしているのか意図がわからない。。。
+//        for titleButton in titleButtons {
+//            titleButton.removeFromSuperview()
+//            titleButton.frame = .zero
+//        }
+//        titleButtons.removeAll()
+//        indicatorView.removeFromSuperview()
+//        indicatorView.frame = .zero
         innerConfig = config
         guard let titles = delegate?.titlesInSegementSlideSwitcherView,
             !titles.isEmpty else {
@@ -135,6 +150,11 @@ extension SecondDefaultSwitcherView {
         guard scrollView.frame != .zero else {
             return
         }
+        print(bounds.width)
+        print(bounds.height)
+        print(self.bounds.width)
+        print(self.bounds.height)
+        print(self) // SecondDefaultSwitcherView
         guard !titleButtons.isEmpty else {
             scrollView.contentSize = CGSize(width: bounds.width, height: bounds.height)
             return
@@ -170,14 +190,17 @@ extension SecondDefaultSwitcherView {
     // 【メモ】ボタンタップ後の動きを設定している
     private func updateSelectedButton(at index: Int, animated: Bool) {
         print(selectedIndex)
-        print(defaultSelectedIndex)
+        print(defaultSelectedIndex) // 常に0
         guard scrollView.frame != .zero else {
             return
         }
+        // index == selectedIndexの場合returnさせる(何回も呼ぶし、今と同じなら下の処理をしなくていい)
         guard index != selectedIndex else {
             return
         }
         let count = titleButtons.count
+        // selectedIndexがnilだからここは実行されない?
+        // 【疑問】ここのif文がないと、、他のbuttonがselectedされているままになってしまうのはなぜ？
         if let selectedIndex = selectedIndex {
             guard selectedIndex >= 0, selectedIndex < count else {
                 return
@@ -194,10 +217,16 @@ extension SecondDefaultSwitcherView {
         titleButton.titleLabel?.font = innerConfig.selectedTitleFont
         if animated, indicatorView.frame != .zero {
             UIView.animate(withDuration: 0.25) {
-                self.indicatorView.frame = CGRect(x: titleButton.frame.origin.x+(titleButton.bounds.width-self.innerConfig.indicatorWidth)/2, y: self.frame.height-self.innerConfig.indicatorHeight, width: self.innerConfig.indicatorWidth, height: self.innerConfig.indicatorHeight)
+                self.indicatorView.frame = CGRect(x: titleButton.frame.origin.x+(titleButton.bounds.width-self.innerConfig.indicatorWidth)/2,
+                                    y: self.frame.height-self.innerConfig.indicatorHeight,
+                                    width: self.innerConfig.indicatorWidth,
+                                    height: self.innerConfig.indicatorHeight)
             }
         } else {
-            indicatorView.frame = CGRect(x: titleButton.frame.origin.x+(titleButton.bounds.width-innerConfig.indicatorWidth)/2, y: frame.height-innerConfig.indicatorHeight, width: innerConfig.indicatorWidth, height: innerConfig.indicatorHeight)
+            indicatorView.frame = CGRect(x: titleButton.frame.origin.x+(titleButton.bounds.width-innerConfig.indicatorWidth)/2,
+                                         y: frame.height-innerConfig.indicatorHeight,
+                                         width: innerConfig.indicatorWidth,
+                                         height: innerConfig.indicatorHeight)
         }
         if case .segement = innerConfig.type {
             var offsetX = titleButton.frame.origin.x-(scrollView.bounds.width-titleButton.bounds.width)/2
@@ -210,11 +239,15 @@ extension SecondDefaultSwitcherView {
                 scrollView.setContentOffset(CGPoint(x: offsetX, y: scrollView.contentOffset.y), animated: animated)
             }
         }
+        // ここで初めてselectedIndexがnilじゃなくなる
+        // 【疑問】このindexはメソッドの引数から渡されたものなのか？
         self.selectedIndex = index
+        print(selectedIndex)
     }
 
     @objc
     private func didClickTitleButton(_ button: UIButton) {
+        // ここでindex: Intとしてのbutton.tagを渡しているけど、、なにかおかしな挙動している気がする
         selectItem(at: button.tag, animated: true)
     }
 
