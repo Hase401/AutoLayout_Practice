@@ -17,20 +17,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="haj-QX-ehT">
-                                <rect key="frame" x="181" y="418" width="52" height="60"/>
+                                <rect key="frame" x="150" y="403" width="114" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyg-mp-jQG">
-                                        <rect key="frame" x="0.0" y="0.0" width="52" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="114" height="30"/>
                                         <state key="normal" title="First"/>
                                         <connections>
                                             <segue destination="fV1-KU-VWt" kind="show" id="7Dc-ss-8Wp"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCq-RR-LM5">
-                                        <rect key="frame" x="0.0" y="30" width="52" height="30"/>
+                                        <rect key="frame" x="0.0" y="30" width="114" height="30"/>
                                         <state key="normal" title="Second"/>
                                         <connections>
                                             <segue destination="H0q-Ke-8ZL" kind="show" id="Za2-GG-c3d"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSH-8J-xSx" userLabel="MySwitcherView">
+                                        <rect key="frame" x="0.0" y="60" width="114" height="30"/>
+                                        <state key="normal" title="MySwitcherView"/>
+                                        <connections>
+                                            <segue destination="KvE-6T-jlQ" kind="show" id="fYH-CS-lGp"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -63,7 +70,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kUZ-8O-hdn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545" y="386"/>
+            <point key="canvasLocation" x="1551" y="101"/>
+        </scene>
+        <!--My View Controller-->
+        <scene sceneID="MTa-eH-poh">
+            <objects>
+                <viewController id="KvE-6T-jlQ" customClass="MyViewController" customModule="ScrollViewAutoLayout_Practice3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uSb-Lb-zcb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="LA5-2Q-PFo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lWL-By-Gxa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C2G-Kb-vlq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1551" y="836"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="fBE-Xz-v5I">
@@ -93,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBq-n1-i9o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545" y="-296"/>
+            <point key="canvasLocation" x="1586" y="-672"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="66g-GH-hlh">

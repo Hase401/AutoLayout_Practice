@@ -19,10 +19,9 @@ class MySwitcherView: UIView {
 
     // 【重要メモ】プロトコルのdelegateでプロパテを置く意味があんまりわからなかったので、自分で試しにここにおいてみる
     // 【メモ】オプショナル型にしないとguard letが使えない
-    var titlesInSegementSlideSwitcherView: [String]?
+    var titlesInSegementSlideSwitcherView: [String]? = ["Swift", "Ruby", "Realm", "Firebase"]
 
     /// you should call `reloadData()` after set this property.
-    // 【疑問】どこでこのプロパティをセットしているのか
     var defaultSelectedIndex: Int?
     var selectedIndex: Int?
 
@@ -31,6 +30,7 @@ class MySwitcherView: UIView {
         return scrollView.contentSize
     }
 
+    // 【疑問】カスタムビューだからinitが必要なのかな？
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -53,20 +53,23 @@ class MySwitcherView: UIView {
         scrollView.backgroundColor = .clear
         backgroundColor = .white // self.backgroundColorかな
     }
-    
+
+    // ②に呼ばれる
     public override func layoutSubviews() {
         super.layoutSubviews()
+        // buttonの設定など、一番最初に呼びたいreloadContents()
         reloadContents()
-//        updateSelectedIndex()
+        updateSelectedIndex()
     }
 
+    // ①に呼ばれる
     public func reloadData() {
-//        reloadSubViews()
+        reloadSubViews()
     }
 
-    // 【疑問】どこで読んでいるのか→@objcでボタンから読んでいる // 2ドデマでは？
+    // 【疑問】どこで読んでいるのか→@objcでボタンから読んでいる // 2ドデマでは？ // 引数によって使う場面を変えられる？
     public func selectItem(at index: Int, animated: Bool) {
-//        updateSelectedButton(at: index, animated: animated)
+        updateSelectedButton(at: index, animated: animated)
     }
     
 }
@@ -111,6 +114,7 @@ extension MySwitcherView {
 
         /// 始めから自分で設定？
         // Returns a sequence of pairs (n, x), where n represents a consecutive integer starting at zero and x represents an element of the sequence.
+        print(titles)
         for (index, title) in titles.enumerated() {
             let button = UIButton(type: .custom)
             // falseだと、フレームが受信機の可視範囲を超えているサブビューはクリップされない // デフォルトの値は false
@@ -193,6 +197,7 @@ extension MySwitcherView {
     // 【メモ】ボタンタップ後の動きを設定している(なんとanimationを使っていた！)
     private func updateSelectedButton(at index: Int, animated: Bool) {
         print(selectedIndex)
+//        print("index: \(index)") //???
         print(defaultSelectedIndex)
         guard scrollView.frame != .zero else {
             return
@@ -201,7 +206,9 @@ extension MySwitcherView {
             return
         }
         let count = titleButtons.count
+        // 初期画面以外ならさっきまでseletctedされていたButtonのconfigをnormalに戻す
         if let selectedIndex = selectedIndex {
+            // selectedIndexが0より小さいか、selectedIndexがcount以上か、どちら片方でも成り立つ異常事態ならreturnする
             guard selectedIndex >= 0, selectedIndex < count else {
                 return
             }
@@ -209,36 +216,38 @@ extension MySwitcherView {
             selectedTitleButton.setTitleColor(innerConfig.normalTitleColor, for: .normal)
             selectedTitleButton.titleLabel?.font = innerConfig.normalTitleFont
         }
+        // 選ばれたindex(button.tag)が0より小さいか、count以上ならreturnする
         guard index >= 0, index < count else {
             return
         }
+        // 選ばれたbuttonに対してのconfigを行うため、titleButtonというプロパティを作る
         let titleButton = titleButtons[index]
         titleButton.setTitleColor(innerConfig.selectedTitleColor, for: .normal)
         titleButton.titleLabel?.font = innerConfig.selectedTitleFont
+
         if animated, indicatorView.frame != .zero {
             UIView.animate(withDuration: 0.25) {
-                self.indicatorView.frame = CGRect(x: titleButton.frame.origin.x+(titleButton.bounds.width-self.innerConfig.indicatorWidth)/2, y: self.frame.height-self.innerConfig.indicatorHeight, width: self.innerConfig.indicatorWidth, height: self.innerConfig.indicatorHeight)
+                self.indicatorView.frame =
+                    // 【疑問】originを使うタイミングはいつがいいのか？　// subviewとなるindicatorViewの位置を変えたいとき
+                    CGRect(x:titleButton.frame.origin.x+(titleButton.bounds.width-self.innerConfig.indicatorWidth)/2,
+                           y: self.frame.height-self.innerConfig.indicatorHeight,
+                           width: self.innerConfig.indicatorWidth,
+                           height: self.innerConfig.indicatorHeight)
             }
         } else {
-            indicatorView.frame = CGRect(x: titleButton.frame.origin.x+(titleButton.bounds.width-innerConfig.indicatorWidth)/2, y: frame.height-innerConfig.indicatorHeight, width: innerConfig.indicatorWidth, height: innerConfig.indicatorHeight)
+            // 次の処理は上のselfを省略したバージョンではないのか？ // animation(クロージャ)を使わないからselfがいらない？
+            indicatorView.frame =
+                CGRect(x:titleButton.frame.origin.x+(titleButton.bounds.width-innerConfig.indicatorWidth)/2,
+                       y: frame.height-innerConfig.indicatorHeight,
+                       width: innerConfig.indicatorWidth,
+                       height: innerConfig.indicatorHeight)
         }
 
-        // よくわかんない削除？
-//        if case .segement = innerConfig.type {
-//            var offsetX = titleButton.frame.origin.x-(scrollView.bounds.width-titleButton.bounds.width)/2
-//            if offsetX < 0 {
-//                offsetX = 0
-//            } else if (offsetX+scrollView.bounds.width) > scrollView.contentSize.width {
-//                offsetX = scrollView.contentSize.width-scrollView.bounds.width
-//            }
-//            if scrollView.contentSize.width > scrollView.bounds.width {
-//                scrollView.setContentOffset(CGPoint(x: offsetX, y: scrollView.contentOffset.y), animated: animated)
-//            }
-//        }
-
         self.selectedIndex = index
+        print(selectedIndex)
     }
 
+    // buttonを引数にすることでbutton.tagが使える
     @objc
     private func didClickTitleButton(_ button: UIButton) {
         selectItem(at: button.tag, animated: true)

@@ -19,13 +19,15 @@
 		BA0DC84B26AC3F6A00171F3D /* SwitcherConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC84A26AC3F6A00171F3D /* SwitcherConfig.swift */; };
 		BA0DC84D26AC3F8600171F3D /* String+Bounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC84C26AC3F8600171F3D /* String+Bounding.swift */; };
 		BA0DC84F26AC3FF200171F3D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC84E26AC3FF200171F3D /* SecondViewController.swift */; };
-		BA0DC85126AC405600171F3D /* SwitcherDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC85026AC405600171F3D /* SwitcherDelegate.swift */; };
 		BA0DC85326AC40AC00171F3D /* SecondViewController+setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC85226AC40AC00171F3D /* SecondViewController+setup.swift */; };
 		BA0DC85526AC42C800171F3D /* SecondDefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC85426AC42C800171F3D /* SecondDefaultViewController.swift */; };
 		BA0DC85726ACE62900171F3D /* SecondDefaultSwitcherView+ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC85626ACE62900171F3D /* SecondDefaultSwitcherView+ex.swift */; };
 		BA0DC85926ACE67100171F3D /* SwitcherDataSourceWeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC85826ACE67100171F3D /* SwitcherDataSourceWeakBox.swift */; };
 		BA0DC85B26ACE76100171F3D /* SecondSlideScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC85A26ACE76100171F3D /* SecondSlideScrollView.swift */; };
 		BA0DC85D26ACE83400171F3D /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0DC85C26ACE83400171F3D /* UIView+Constraint.swift */; };
+		BA6A478B26B8E11200E8DF68 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A478A26B8E11200E8DF68 /* MyViewController.swift */; };
+		BA6A478D26B8EBD500E8DF68 /* MyViewController+setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A478C26B8EBD500E8DF68 /* MyViewController+setup.swift */; };
+		BA6F9B1126B90F4800B8D833 /* SwitcherDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F9B1026B90F4800B8D833 /* SwitcherDelegate.swift */; };
 		BA88821126AD1F5A0092A4A0 /* ConfigManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88821026AD1F5A0092A4A0 /* ConfigManger.swift */; };
 		BA88821526AE2BC60092A4A0 /* SegementSlideContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88821426AE2BC60092A4A0 /* SegementSlideContentView.swift */; };
 		BA88821726AE2C8D0092A4A0 /* SecondViewController+delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA88821626AE2C8C0092A4A0 /* SecondViewController+delegate.swift */; };
@@ -48,13 +50,15 @@
 		BA0DC84A26AC3F6A00171F3D /* SwitcherConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitcherConfig.swift; sourceTree = "<group>"; };
 		BA0DC84C26AC3F8600171F3D /* String+Bounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Bounding.swift"; sourceTree = "<group>"; };
 		BA0DC84E26AC3FF200171F3D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		BA0DC85026AC405600171F3D /* SwitcherDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwitcherDelegate.swift; path = ../../../../ios_AppTrainingSalon/SwitcherDelegate.swift; sourceTree = "<group>"; };
 		BA0DC85226AC40AC00171F3D /* SecondViewController+setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondViewController+setup.swift"; sourceTree = "<group>"; };
 		BA0DC85426AC42C800171F3D /* SecondDefaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDefaultViewController.swift; sourceTree = "<group>"; };
 		BA0DC85626ACE62900171F3D /* SecondDefaultSwitcherView+ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondDefaultSwitcherView+ex.swift"; sourceTree = "<group>"; };
 		BA0DC85826ACE67100171F3D /* SwitcherDataSourceWeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitcherDataSourceWeakBox.swift; sourceTree = "<group>"; };
 		BA0DC85A26ACE76100171F3D /* SecondSlideScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSlideScrollView.swift; sourceTree = "<group>"; };
 		BA0DC85C26ACE83400171F3D /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
+		BA6A478A26B8E11200E8DF68 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		BA6A478C26B8EBD500E8DF68 /* MyViewController+setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyViewController+setup.swift"; sourceTree = "<group>"; };
+		BA6F9B1026B90F4800B8D833 /* SwitcherDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitcherDelegate.swift; sourceTree = "<group>"; };
 		BA88821026AD1F5A0092A4A0 /* ConfigManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManger.swift; sourceTree = "<group>"; };
 		BA88821426AE2BC60092A4A0 /* SegementSlideContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegementSlideContentView.swift; sourceTree = "<group>"; };
 		BA88821626AE2C8C0092A4A0 /* SecondViewController+delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecondViewController+delegate.swift"; sourceTree = "<group>"; };
@@ -122,7 +126,7 @@
 			children = (
 				BA88821426AE2BC60092A4A0 /* SegementSlideContentView.swift */,
 				BA0DC84A26AC3F6A00171F3D /* SwitcherConfig.swift */,
-				BA0DC85026AC405600171F3D /* SwitcherDelegate.swift */,
+				BA6F9B1026B90F4800B8D833 /* SwitcherDelegate.swift */,
 				BA0DC84826AC3EDA00171F3D /* SecondDefaultSwitcherView.swift */,
 				BA0DC85626ACE62900171F3D /* SecondDefaultSwitcherView+ex.swift */,
 				BA0DC85426AC42C800171F3D /* SecondDefaultViewController.swift */,
@@ -148,6 +152,8 @@
 			children = (
 				BA88826E26B644BF0092A4A0 /* MySwitcherConfig.swift */,
 				BA88826B26B5889C0092A4A0 /* MySwitcherView.swift */,
+				BA6A478A26B8E11200E8DF68 /* MyViewController.swift */,
+				BA6A478C26B8EBD500E8DF68 /* MyViewController+setup.swift */,
 			);
 			path = MySwitcherView;
 			sourceTree = "<group>";
@@ -240,9 +246,11 @@
 				BA0DC85726ACE62900171F3D /* SecondDefaultSwitcherView+ex.swift in Sources */,
 				BA0DC85326AC40AC00171F3D /* SecondViewController+setup.swift in Sources */,
 				BA0DC84D26AC3F8600171F3D /* String+Bounding.swift in Sources */,
-				BA0DC85126AC405600171F3D /* SwitcherDelegate.swift in Sources */,
 				BA88826C26B5889C0092A4A0 /* MySwitcherView.swift in Sources */,
+				BA6F9B1126B90F4800B8D833 /* SwitcherDelegate.swift in Sources */,
+				BA6A478B26B8E11200E8DF68 /* MyViewController.swift in Sources */,
 				BA0DC83326AC3C0200171F3D /* ViewController.swift in Sources */,
+				BA6A478D26B8EBD500E8DF68 /* MyViewController+setup.swift in Sources */,
 				BA88821526AE2BC60092A4A0 /* SegementSlideContentView.swift in Sources */,
 				BA0DC82F26AC3C0200171F3D /* AppDelegate.swift in Sources */,
 				BA0DC84F26AC3FF200171F3D /* SecondViewController.swift in Sources */,

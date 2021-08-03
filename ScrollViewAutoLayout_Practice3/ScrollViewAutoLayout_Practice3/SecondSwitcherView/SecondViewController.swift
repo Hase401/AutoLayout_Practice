@@ -19,7 +19,8 @@ open class SecondViewController: UIViewController {
     public internal(set) var scrollViews: SecondSlideScrollView!
     public internal(set) var switcherView: SwitcherDelegate!
 
-    internal var safeAreaTopConstraint: NSLayoutConstraint?
+    // 削除⭕
+//    internal var safeAreaTopConstraint: NSLayoutConstraint?
 
     public var switcherHeight: CGFloat {
         return switcherView.ssDataSource?.height ?? 44
@@ -52,6 +53,7 @@ open class SecondViewController: UIViewController {
 
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        // これも必須
         layoutSegementSlideScrollView()
     }
 
