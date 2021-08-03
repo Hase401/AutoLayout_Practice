@@ -20,7 +20,7 @@ extension SecondViewController {
         switcherView = segementSlideSwitcherView() // これはメソッド
         var gestureRecognizers: [UIGestureRecognizer] = []
 
-        // これは削除しても平気
+        // 【疑問】これは削除しても平気？
 //        if let gestureRecognizersInScrollView = switcherView.ssScrollView.gestureRecognizers {
 //            gestureRecognizers.append(contentsOf: gestureRecognizersInScrollView)
 //        }
@@ -53,6 +53,12 @@ extension SecondViewController {
         switcherView.translatesAutoresizingMaskIntoConstraints = false
 
         // 以下の必要
+        // headerViewがなくなったので、ここにtopConstraintを追加
+        // 【めちゃ疑問】これがあると逆に表示されなくなるのはなぜ？
+        // navigationBarの裏に隠れる // 逆に紫の警告は消えている // どこかでtopの成約をつけるべき viewcontrollerのself.view.topAnchorだから
+//        if switcherView.topConstraint == nil {
+//            switcherView.topConstraint = switcherView.topAnchor.constraint(equalTo: view.topAnchor)
+//        }
         if switcherView.leadingConstraint == nil {
             switcherView.leadingConstraint = switcherView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         }

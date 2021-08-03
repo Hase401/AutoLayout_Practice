@@ -21,6 +21,7 @@ open class SecondDefaultViewController: SecondViewController {
 
     open override func setupSwitcher() {
         super.setupSwitcher()
+        // 新しく設定したものに更新する？ // ライブラリだから必要であって自作するときはいらない
         defaultSwitcherView.config = switcherConfig
     }
 
@@ -67,7 +68,7 @@ extension SecondDefaultViewController: SwitcherDataSource {
 extension SecondDefaultViewController: DefaultSwitcherViewDelegate {
 
     // このプロパティをdelegateとして設定している理由は？
-    // 
+    // 【重要メモ】SecondDefaultViewControllerからSecondDefaultSwitcherViewに次のプロパティを渡すため
     public var titlesInSegementSlideSwitcherView: [String] {
         // このtitleには上にあるようにtitlesInSwitcherがある
         // nilだったら[]を返す
