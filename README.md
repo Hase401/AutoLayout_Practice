@@ -11,3 +11,8 @@
   StackView in a ScrollView
   </a>
 </p>
+
+<p>[UIScrollViewの仕組み]<br>
+  ・<a href="https://qiita.com/samekard/items/31407a3c2a1aac191008"　target="_blank"　rel="noopener noreferrer">
+  コードでUIScrollView(とその子どもたち)をAutoLayout配置
+  </a>
