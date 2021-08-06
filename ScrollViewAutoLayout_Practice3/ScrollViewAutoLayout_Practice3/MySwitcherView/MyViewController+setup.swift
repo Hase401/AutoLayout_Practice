@@ -20,7 +20,9 @@ extension MyViewController {
 
         // これがあると紫の警告が消える？？
         if mySwitcherView.topConstraint == nil {
-            mySwitcherView.topConstraint = mySwitcherView.topAnchor.constraint(equalTo: view.topAnchor, constant: 44*2)
+            // 【メモ】固定値は様々なデバイスに対応できないので控える
+//            mySwitcherView.topConstraint = mySwitcherView.topAnchor.constraint(equalTo: view.topAnchor, constant: 44*2)
+            mySwitcherView.topConstraint = mySwitcherView.topAnchor.constraint(equalTo: self.navigationController!.navigationBar.bottomAnchor)
         }
 
         if mySwitcherView.leadingConstraint == nil {
