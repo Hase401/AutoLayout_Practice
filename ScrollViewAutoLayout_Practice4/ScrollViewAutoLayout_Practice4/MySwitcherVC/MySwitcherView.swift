@@ -14,7 +14,7 @@ protocol SegementSlideDefaultSwitcherViewDelegate: AnyObject {
 }
 
 // カスタムViewなのでイニシャライザが必要？
-class MySwitcherView: UIView {
+final class MySwitcherView: UIView {
 
     var scrollView = UIScrollView()
     private let indicatorView = UIView()
