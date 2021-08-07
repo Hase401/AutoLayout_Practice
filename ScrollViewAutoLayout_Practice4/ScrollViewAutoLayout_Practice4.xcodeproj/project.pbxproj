@@ -18,6 +18,9 @@
 		BA7DE53D26BADC2F00CF5B62 /* MySwitcherViewController+setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DE53C26BADC2F00CF5B62 /* MySwitcherViewController+setup.swift */; };
 		BA7DE54026BADCCE00CF5B62 /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DE53F26BADCCE00CF5B62 /* UIView+Constraint.swift */; };
 		BA7DE54226BAE08600CF5B62 /* MySwticherContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DE54126BAE08600CF5B62 /* MySwticherContentView.swift */; };
+		BA7DE54426BBA23400CF5B62 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DE54326BBA23300CF5B62 /* ContentViewController.swift */; };
+		BA7DE54626BBA2C300CF5B62 /* ContentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7DE54526BBA2C200CF5B62 /* ContentViewController.storyboard */; };
+		BA7DE54926BC23FC00CF5B62 /* MySwitcherViewController+delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7DE54826BC23FC00CF5B62 /* MySwitcherViewController+delegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		BA7DE53C26BADC2F00CF5B62 /* MySwitcherViewController+setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MySwitcherViewController+setup.swift"; sourceTree = "<group>"; };
 		BA7DE53F26BADCCE00CF5B62 /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
 		BA7DE54126BAE08600CF5B62 /* MySwticherContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySwticherContentView.swift; sourceTree = "<group>"; };
+		BA7DE54326BBA23300CF5B62 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		BA7DE54526BBA2C200CF5B62 /* ContentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentViewController.storyboard; sourceTree = "<group>"; };
+		BA7DE54826BC23FC00CF5B62 /* MySwitcherViewController+delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MySwitcherViewController+delegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 		BA7DE52226BAD7AA00CF5B62 /* ScrollViewAutoLayout_Practice4 */ = {
 			isa = PBXGroup;
 			children = (
+				BA7DE54726BC232800CF5B62 /* MySwitcherVCWithoutDelegate */,
 				BA7DE53E26BADC8E00CF5B62 /* Exteinsion */,
 				BA7DE53726BAD8A200CF5B62 /* MySwitcherVC */,
 				BA7DE52326BAD7AA00CF5B62 /* AppDelegate.swift */,
@@ -83,9 +90,12 @@
 			children = (
 				BA7DE53826BADBD800CF5B62 /* MySwitcherConfig.swift */,
 				BA7DE53A26BADBEF00CF5B62 /* MySwitcherView.swift */,
+				BA7DE54126BAE08600CF5B62 /* MySwticherContentView.swift */,
 				BA7DE52726BAD7AA00CF5B62 /* MySwitcherViewController.swift */,
 				BA7DE53C26BADC2F00CF5B62 /* MySwitcherViewController+setup.swift */,
-				BA7DE54126BAE08600CF5B62 /* MySwticherContentView.swift */,
+				BA7DE54826BC23FC00CF5B62 /* MySwitcherViewController+delegate.swift */,
+				BA7DE54326BBA23300CF5B62 /* ContentViewController.swift */,
+				BA7DE54526BBA2C200CF5B62 /* ContentViewController.storyboard */,
 			);
 			path = MySwitcherVC;
 			sourceTree = "<group>";
@@ -96,6 +106,13 @@
 				BA7DE53F26BADCCE00CF5B62 /* UIView+Constraint.swift */,
 			);
 			path = Exteinsion;
+			sourceTree = "<group>";
+		};
+		BA7DE54726BC232800CF5B62 /* MySwitcherVCWithoutDelegate */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MySwitcherVCWithoutDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +174,7 @@
 			files = (
 				BA7DE53026BAD7AE00CF5B62 /* LaunchScreen.storyboard in Resources */,
 				BA7DE52D26BAD7AE00CF5B62 /* Assets.xcassets in Resources */,
+				BA7DE54626BBA2C300CF5B62 /* ContentViewController.storyboard in Resources */,
 				BA7DE52B26BAD7AA00CF5B62 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,7 +190,9 @@
 				BA7DE54026BADCCE00CF5B62 /* UIView+Constraint.swift in Sources */,
 				BA7DE52426BAD7AA00CF5B62 /* AppDelegate.swift in Sources */,
 				BA7DE54226BAE08600CF5B62 /* MySwticherContentView.swift in Sources */,
+				BA7DE54426BBA23400CF5B62 /* ContentViewController.swift in Sources */,
 				BA7DE53B26BADBEF00CF5B62 /* MySwitcherView.swift in Sources */,
+				BA7DE54926BC23FC00CF5B62 /* MySwitcherViewController+delegate.swift in Sources */,
 				BA7DE53D26BADC2F00CF5B62 /* MySwitcherViewController+setup.swift in Sources */,
 				BA7DE53926BADBD800CF5B62 /* MySwitcherConfig.swift in Sources */,
 				BA7DE52626BAD7AA00CF5B62 /* SceneDelegate.swift in Sources */,

@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol SegementSlideDefaultSwitcherViewDelegate: AnyObject {
+//    var titlesInSegementSlideSwitcherView: [String] { get }
+
+    func segementSwitcherView(_ segementSlideSwitcherView: MySwitcherView, didSelectAtIndex index: Int, animated: Bool)
+}
+
 // カスタムViewなのでイニシャライザが必要？
 class MySwitcherView: UIView {
 
@@ -20,6 +26,8 @@ class MySwitcherView: UIView {
     // 【重要メモ】プロトコルのdelegateでプロパテを置く意味があんまりわからなかったので、自分で試しにここにおいてみる
     // 【メモ】オプショナル型にしないとguard letが使えない
     var titlesInSegementSlideSwitcherView: [String]? = ["Swift", "Ruby", "Realm", "Firebase"]
+    // 【重要メモ】このdelegateでsegementSwitcherView()をbuttonタップしたときに呼んでいる
+    weak var delegate: SegementSlideDefaultSwitcherViewDelegate?
 
     /// you should call `reloadData()` after set this property.
     var defaultSelectedIndex: Int?
@@ -55,7 +63,7 @@ class MySwitcherView: UIView {
     }
 
     // ②に呼ばれる
-    public override func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         // buttonの設定など、一番最初に呼びたいreloadContents()
         reloadContents()
@@ -63,12 +71,12 @@ class MySwitcherView: UIView {
     }
 
     // ①に呼ばれる
-    public func reloadData() {
+    func reloadData() {
         reloadSubViews()
     }
 
     // 【疑問】どこで読んでいるのか→@objcでボタンから読んでいる // 2ドデマでは？ // 引数によって使う場面を変えられる？
-    public func selectItem(at index: Int, animated: Bool) {
+    func selectItem(at index: Int, animated: Bool) {
         updateSelectedButton(at: index, animated: animated)
     }
 
@@ -202,6 +210,7 @@ extension MySwitcherView {
         guard scrollView.frame != .zero else {
             return
         }
+        // 同じところをタップしたらなreturnさせる
         guard index != selectedIndex else {
             return
         }
@@ -244,6 +253,9 @@ extension MySwitcherView {
         }
 
         self.selectedIndex = index
+        // 【追加】delegateでMyViewControllerにselectItem()つまり中身のupdateSelectedViewController
+        // 【疑問】結局delegateは使わなくてもいいの？
+        delegate?.segementSwitcherView(self, didSelectAtIndex: index, animated: animated)
         print(selectedIndex)
     }
 
