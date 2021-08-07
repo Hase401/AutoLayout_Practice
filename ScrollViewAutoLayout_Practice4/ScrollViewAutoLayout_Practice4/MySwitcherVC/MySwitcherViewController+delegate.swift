@@ -20,6 +20,15 @@ extension MySwitcherViewController: SegementSlideContentDelegate {
         return segementSlideContentViewController(at: index) // ContentViewControllerを返す
     }
 
+    // 【追加③】
+    // 【重要メモ】これだけではscrollできない！！のでContentViewのscrollViewが鍵になってくるのではないだろうか？
+    func segementSlideContentView(_ segementSlideContentView: MySwitcherContentView, didSelectAtIndex index: Int, animated: Bool) {
+        cachedChildViewControllerIndex.insert(index)
+        if mySwitcherView.selectedIndex != index {
+            mySwitcherView.selectItem(at: index, animated: animated)
+        }
+    }
+
 }
 
 // switcherViewのタbuttonタップ時に呼ばれるdelegateメソッドかな？

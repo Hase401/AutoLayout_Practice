@@ -8,7 +8,7 @@
 import UIKit
 
 // 【メモ】プロトコルでviewControllersの中身の型を設定できるのではないか？
-public protocol ContentViewDelegate where Self: UIViewController {
+protocol ContentViewDelegate where Self: UIViewController {
 
 }
 
@@ -18,6 +18,9 @@ protocol SegementSlideContentDelegate: AnyObject {
 //
 //    // これでHomesViewControllerに(SegementSlideViewControllerを)継承して実行している
     func segementSlideContentScrollView(at index: Int) -> ContentViewDelegate?
+
+    // 【追加②】
+    func segementSlideContentView(_ segementSlideContentView: MySwitcherContentView, didSelectAtIndex index: Int, animated: Bool)
 
 }
 
@@ -37,7 +40,7 @@ final class MySwitcherContentView: UIView {
     weak var delegate: SegementSlideContentDelegate?
 
     // 【疑問】scrollViewの中のプロパティをContentViewのスコープ内にも持たせたい！？
-    public var isScrollEnabled: Bool {
+    var isScrollEnabled: Bool {
         get {
             return scrollView.isScrollEnabled
         }
@@ -59,7 +62,8 @@ final class MySwitcherContentView: UIView {
     private func setup() {
         addSubview(scrollView)
         scrollView.constraintToSuperview()
-//        scrollView.delegate = self
+        // 【追加②】contentViewをscrollしたときの動作
+        scrollView.delegate = self
         scrollView.isScrollEnabled = true
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
@@ -70,6 +74,8 @@ final class MySwitcherContentView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        // 【追加④】contentViewをscrollしたときの動作
+        updateScrollViewContentSize()
         updateSelectedIndex()
     }
 
@@ -95,29 +101,47 @@ final class MySwitcherContentView: UIView {
     }
 }
 
-//extension MySwitcherContentView: UIScrollViewDelegate {
-//
-//    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        if decelerate { return }
-//        scrollViewDidEndScroll(scrollView)
-//    }
-//
-//    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        scrollViewDidEndScroll(scrollView)
-//    }
-//
-//    private func scrollViewDidEndScroll(_ scrollView: UIScrollView) {
-//        let indexFloat = scrollView.contentOffset.x/scrollView.bounds.width
-//        guard !indexFloat.isNaN, indexFloat.isFinite else {
-//            return
-//        }
-//        let index = Int(indexFloat)
-//        updateSelectedViewController(at: index, animated: true)
-//    }
-//
-//}
+// 【追加①】contentViewをscrollしたときの動作
+extension MySwitcherContentView: UIScrollViewDelegate {
+
+    /// スクロールビューでのドラッグが終了したとき、デリゲートに通知
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // decelerateがtrueなので毎回何もしない
+        // ドラッグ操作中にタッチアップジェスチャーを行った後、スクロールの動きを継続しながら減速する場合はtrue
+        // falseを指定すると、タッチアップ時にスクロールを停止
+        if decelerate { return }
+        scrollViewDidEndScroll(scrollView)
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollViewDidEndScroll(scrollView)
+    }
+
+    private func scrollViewDidEndScroll(_ scrollView: UIScrollView) {
+        let indexFloat = scrollView.contentOffset.x/scrollView.bounds.width
+        guard !indexFloat.isNaN, indexFloat.isFinite else {
+            return
+        }
+        let index = Int(indexFloat)
+        updateSelectedViewController(at: index, animated: true)
+    }
+
+}
 
 extension MySwitcherContentView {
+
+    // 【追加③】contentViewをscrollしたときの動作
+    // 【メモ】横スクロールするためにもscrollViewのcontentSizeがしっかりcount*scrollView.bounds.widthになっていないといけない
+    private func updateScrollViewContentSize() {
+        guard let count = delegate?.segementSlideContentScrollViewCount else {
+            return
+        }
+        let contentSize = CGSize(width: CGFloat(count)*scrollView.bounds.width, height: scrollView.bounds.height)
+        guard scrollView.contentSize != contentSize else {
+            return
+        }
+        scrollView.contentSize = contentSize
+    }
 
     private func updateSelectedIndex() {
         if let index = selectedIndex  {
@@ -217,6 +241,7 @@ extension MySwitcherContentView {
 
         // 【新重要メモ】恐らくこれでスクロールしたときのswitcherViewを呼んで表示するように設定している
         // プロトコルに新しくsegementSlideContentView()のメソッドを追加する必要がある
-//        delegate?.segementSlideContentView(self, didSelectAtIndex: index, animated: animated)
+        // 【追加①】
+        delegate?.segementSlideContentView(self, didSelectAtIndex: index, animated: animated)
     }
 }

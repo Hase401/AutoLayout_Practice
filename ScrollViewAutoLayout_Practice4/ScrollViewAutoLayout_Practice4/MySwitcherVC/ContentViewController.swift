@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContentViewController: UIViewController, ContentViewDelegate {
+final class ContentViewController: UIViewController, ContentViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
 
