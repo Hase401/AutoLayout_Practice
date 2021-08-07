@@ -9,21 +9,35 @@ import UIKit
 
 extension MySwitcherViewController {
 
-    internal func layoutSegementSlideScrollView() {
+    // まだ使わなくても大丈夫
+    func setup() {
+        setupSegementSlideSwitcherView()
+        setupSegementSlideContentView()
+    }
 
-        // 【メモ】これを一番最初に置くと良さそう
+    func setupSegementSlideSwitcherView() {
         // addSubviewしてから色々な成約をつけるという順番？
+        // 【重要メモ】このSwitcherViewでのdelegateはswitcherViewのdelegateが終わったあとにしよう
+        mySwitcherView.delegate = self
         self.view.addSubview(mySwitcherView)
+    }
 
+    func setupSegementSlideContentView() {
+        mySwitcherContentView.delegate = self
+        // ここviewControllerを使ってSegementSlideViewController(self)を渡していたんだ、、
+        mySwitcherContentView.viewController = self
+        self.view.addSubview(mySwitcherContentView)
+    }
+
+
+    func layoutSegementSlideScrollView() {
         /// これは必須
         mySwitcherView.translatesAutoresizingMaskIntoConstraints = false
-
-        // 【エラー】Value of type 'MySwitcherView' has no member 'topConstraint'
+        // 【エラー】Value of type 'MySwitcherView' has no member 'topConstraint' // Extensionのおかげ？
         // これがあると紫の警告が消える？？
         if mySwitcherView.topConstraint == nil {
-            mySwitcherView.topConstraint = mySwitcherView.topAnchor.constraint(equalTo: view.topAnchor, constant: 44*2)
+            mySwitcherView.topConstraint = mySwitcherView.topAnchor.constraint(equalTo: navigationController!.navigationBar.bottomAnchor)
         }
-
         if mySwitcherView.leadingConstraint == nil {
             mySwitcherView.leadingConstraint = mySwitcherView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         }
@@ -37,11 +51,24 @@ extension MySwitcherViewController {
                 mySwitcherView.heightConstraint?.constant = switcherHeight
             }
         }
-    }
 
-//    internal func setup() {
-////        self.view.addSubview(mySwitcherView)
-//        // この制約がないと上手くいかない
-////        mySwitcherView.constraintToSuperview()
-//    }
+
+        mySwitcherContentView.translatesAutoresizingMaskIntoConstraints = false
+        if mySwitcherContentView.topConstraint == nil {
+            mySwitcherContentView.topConstraint = mySwitcherContentView.topAnchor.constraint(equalTo: mySwitcherView.bottomAnchor)
+        }
+        if mySwitcherContentView.leadingConstraint == nil {
+            mySwitcherContentView.leadingConstraint = mySwitcherContentView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        }
+        if mySwitcherContentView.trailingConstraint == nil {
+            mySwitcherContentView.trailingConstraint = mySwitcherContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        }
+        if mySwitcherContentView.bottomConstraint == nil {
+            mySwitcherContentView.bottomConstraint = mySwitcherContentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        }
+
+        mySwitcherView.layer.zPosition = -1
+        mySwitcherContentView.layer.zPosition = -2
+
+    }
 }
