@@ -8,37 +8,34 @@
 import UIKit
 
 protocol SegementSlideDefaultSwitcherViewDelegate: AnyObject {
-//    var titlesInSegementSlideSwitcherView: [String] { get }
 
     func segementSwitcherView(_ segementSlideSwitcherView: MySwitcherView, didSelectAtIndex index: Int, animated: Bool)
+
 }
 
-// カスタムViewなのでイニシャライザが必要？
+// 【メモ】CustomViewなのでイニシャライザが必要
 final class MySwitcherView: UIView {
 
     var scrollView = UIScrollView()
     private let indicatorView = UIView()
-    // 【疑問】どこで中身を代入しているのか
     private var titleButtons: [UIButton] = []
-    // 【疑問】classではなく、structで共通化する方法どうするんだっけ？(あきおさんがやっていた気がする)
+    // 【疑問メモ】classではなく、structで共通化する方法どうするんだっけ？(サロンのどこかのSlackにあった気がする)
     private var innerConfig: MySwitcherConfig = MySwitcherConfig()
 
-    // 【重要メモ】プロトコルのdelegateでプロパテを置く意味があんまりわからなかったので、自分で試しにここにおいてみる
-    // 【メモ】オプショナル型にしないとguard letが使えない
+    // 【メモ】オプショナル型にしないとguard letが使えなくて安全性を保てない
     var titlesInSegementSlideSwitcherView: [String]? = ["Swift", "Ruby", "Realm", "Firebase"]
     // 【重要メモ】このdelegateでsegementSwitcherView()をbuttonタップしたときに呼んでいる
     weak var delegate: SegementSlideDefaultSwitcherViewDelegate?
 
     /// you should call `reloadData()` after set this property.
     var defaultSelectedIndex: Int?
-    var selectedIndex: Int?
+    private(set) var selectedIndex: Int?
 
-    // 親のUIViewのプロパティ
+    // 【疑問】これがなくても動くが、、本当に必要なのか？
     override var intrinsicContentSize: CGSize {
         return scrollView.contentSize
     }
 
-    // 【疑問】カスタムビューだからinitが必要なのかな？
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -50,7 +47,8 @@ final class MySwitcherView: UIView {
     }
 
     private func setup() {
-        addSubview(scrollView) // 一番上にscrollViewがある
+        // ビュー階層の一番上にある
+        addSubview(scrollView)
         scrollView.constraintToSuperview()
         // 水平スクロールインジケータが表示されているかどうかを制御するブール値
         scrollView.showsHorizontalScrollIndicator = false
@@ -59,24 +57,23 @@ final class MySwitcherView: UIView {
         // 上部へのスクロールジェスチャーを有効にするかどうかを制御するブール値
         scrollView.scrollsToTop = false
         scrollView.backgroundColor = .clear
-        backgroundColor = .white // self.backgroundColorかな
+        backgroundColor = .white
     }
 
-    // ②に呼ばれる
+    // 【疑問】なぜ、2回も呼ばれているのか？
     override func layoutSubviews() {
         super.layoutSubviews()
-        // buttonの設定など、一番最初に呼びたいreloadContents()
         reloadContents()
         updateSelectedIndex()
     }
 
-    // ①に呼ばれる
     func reloadData() {
+        // 【メモ】private化されているのでこのMySwitcherView内で呼ぶ
         reloadSubViews()
     }
 
-    // 【疑問】どこで読んでいるのか→@objcでボタンから読んでいる // 2ドデマでは？ // 引数によって使う場面を変えられる？
     func selectItem(at index: Int, animated: Bool) {
+        // 【メモ】private化されているのでこのMySwitcherView内で呼ぶ
         updateSelectedButton(at: index, animated: animated)
     }
 
@@ -95,24 +92,18 @@ extension MySwitcherView {
     /// buttonとindicatorViewをscrollView.addSubView()する
     private func reloadSubViews() {
 
-        /// 初期化？実際なくても動く！！よくわからない。。。
+        /// buttonとindicatorViewの初期化
         for titleButton in titleButtons {
             // スーパービューおよびウィンドウからビューのリンクを解除し、レスポンダチェーンからビューを削除
+            // ビューのスーパービューがnilでない場合、スーパービューはビューを解除
+            // 削除しているビューを参照している制約や、削除しているビューのサブツリー内の任意のビューを参照している制約がすべて削除
             titleButton.removeFromSuperview()
             titleButton.frame = .zero
         }
-        // 【疑問メモ】コレクションからすべての要素を削除
         titleButtons.removeAll()
         indicatorView.removeFromSuperview()
         indicatorView.frame = .zero
-        // 削除？ なんで同じものを渡していたのか？
-//        innerConfig = config
 
-        // 削除
-//        guard let titles = delegate?.titlesInSegementSlideSwitcherView,
-//            !titles.isEmpty else {
-//            return
-//        }
         // titles.isEmptyがtureだったらreturnさせたいので、、、
         // 2重否定で、tureじゃない場合"じゃなかったら"returnさせる(trueだったらreturn)　// わかりづらい
         guard let titles = titlesInSegementSlideSwitcherView,
@@ -120,27 +111,23 @@ extension MySwitcherView {
             return
         }
 
-        /// 始めから自分で設定？
-        // Returns a sequence of pairs (n, x), where n represents a consecutive integer starting at zero and x represents an element of the sequence.
-        print(titles)
         for (index, title) in titles.enumerated() {
             let button = UIButton(type: .custom)
-            // falseだと、フレームが受信機の可視範囲を超えているサブビューはクリップされない // デフォルトの値は false
+            // falseだと、フレームが受信機の可視範囲を超えているサブビューはクリップされない
+            // デフォルトの値は false
             button.clipsToBounds = false
             button.titleLabel?.font = innerConfig.normalTitleFont
             button.backgroundColor = .clear
-            // ここでタイトルを伝える
             button.setTitle(title, for: .normal)
-            // ここで順番を上手く伝える
+            // ここで順番を伝える
             button.tag = index
             button.setTitleColor(innerConfig.normalTitleColor, for: .normal)
-            // 【メモ】ここでボタンのタップ後の挙動を設定
             button.addTarget(self, action: #selector(didClickTitleButton), for: .touchUpInside)
             scrollView.addSubview(button)
             titleButtons.append(button)
         }
 
-        // 【疑問メモ】indicatorViewはどこに表示するかの成約がまだ
+        // 【疑問】indicatorViewはどこに表示するかの成約がまだでは？
         scrollView.addSubview(indicatorView)
         // サブレイヤーがレイヤーの境界にクリッピングされるかどうかを示すブール値
         indicatorView.layer.masksToBounds = true
@@ -158,64 +145,41 @@ extension MySwitcherView {
             scrollView.contentSize = CGSize(width: bounds.width, height: bounds.height)
             return
         }
-//        scrollView.contentSize = CGSize(width: bounds.width, height: bounds.height)
 
         // titleButtonをframeのx座標として設定するのに必要
         var offsetX = innerConfig.horizontalMargin
         // 【疑問メモ】titleButton.frame = .zeroしていたのでここで設定してあげる必要がある？
         for titleButton in titleButtons {
             let buttonWidth: CGFloat
-            buttonWidth = (bounds.width-innerConfig.horizontalMargin*2)/CGFloat(titleButtons.count) // CGFloat型だからそれで割る
-
-            // 削除🔺
-//            switch innerConfig.type {
-//            case .tab:
-//                buttonWidth = (bounds.width-innerConfig.horizontalMargin*2)/CGFloat(titleButtons.count)
-//            case .segement:
-//                let title = titleButton.title(for: .normal) ?? ""
-//                let normalButtonWidth = title.boundingWidth(with: innerConfig.normalTitleFont)
-//                let selectedButtonWidth = title.boundingWidth(with: innerConfig.selectedTitleFont)
-//                buttonWidth = selectedButtonWidth > normalButtonWidth ? selectedButtonWidth : normalButtonWidth
-//            }
-
+            buttonWidth = (bounds.width-innerConfig.horizontalMargin*2)/CGFloat(titleButtons.count)
             // 【疑問】self.bounds.heightではなく、scrollView.bounds.heightなのはsuperViewだから？
             titleButton.frame = CGRect(x: offsetX, y: 0, width: buttonWidth, height: scrollView.bounds.height)
             offsetX += buttonWidth
 
-            // 削除🔺
-//            switch innerConfig.type {
-//            case .tab:
-//                offsetX += buttonWidth
-//            case .segement:
-//                offsetX += buttonWidth+innerConfig.horizontalSpace
-//            }
         }
-        // 【メモ】ここじゃなくて、上の方に書いてもよさそう
-        scrollView.contentSize = CGSize(width: bounds.width, height: bounds.height)
 
-        // 削除🔺
-//        switch innerConfig.type {
-//        case .tab:
-//            scrollView.contentSize = CGSize(width: bounds.width, height: bounds.height)
-//        case .segement:
-//            scrollView.contentSize = CGSize(width: offsetX-innerConfig.horizontalSpace+innerConfig.horizontalMargin, height: bounds.height)
-//        }
+        scrollView.contentSize = CGSize(width: bounds.width, height: bounds.height)
     }
 
     // 【メモ】ボタンタップ後の動きを設定している(なんとanimationを使っていた！)
     private func updateSelectedButton(at index: Int, animated: Bool) {
-        print(selectedIndex)
-//        print("index: \(index)") //???
-        print(defaultSelectedIndex)
+        print("-------------------- Start updateSelectedButton() ---------------------")
+        print("index: ", index)
+        print("selectedIndex: ", selectedIndex)
+        print("defaultSelectedIndex: ", defaultSelectedIndex)
+        print("switcherView scrollView.frame: ", scrollView.frame)
         guard scrollView.frame != .zero else {
+            print("---------- scrollView.frame = .zero → updateSelectedButton() return ----------")
             return
         }
-        // 同じところをタップしたらなreturnさせる
+        // 【メモ】同じところをタップしたらreturnさせる
         guard index != selectedIndex else {
+            print("---------- index == selectedIndex → updateSelectedButton() return ----------")
             return
         }
+
         let count = titleButtons.count
-        // 初期画面以外ならさっきまでseletctedされていたButtonのconfigをnormalに戻す
+        // nil(初期画面)以外ならさっきまでseletctedされていたButtonのconfigをnormalに戻す
         if let selectedIndex = selectedIndex {
             // selectedIndexが0より小さいか、selectedIndexがcount以上か、どちら片方でも成り立つ異常事態ならreturnする
             guard selectedIndex >= 0, selectedIndex < count else {
@@ -225,11 +189,11 @@ extension MySwitcherView {
             selectedTitleButton.setTitleColor(innerConfig.normalTitleColor, for: .normal)
             selectedTitleButton.titleLabel?.font = innerConfig.normalTitleFont
         }
-        // 選ばれたindex(button.tag)が0より小さいか、count以上ならreturnする
+        // 選ばれたindex(button.tag)が0より小さいか、count以上の異常事態ならreturnする
         guard index >= 0, index < count else {
             return
         }
-        // 選ばれたbuttonに対してのconfigを行うため、titleButtonというプロパティを作る
+        // 選ばれているbuttonに対してconfigをselectedにする
         let titleButton = titleButtons[index]
         titleButton.setTitleColor(innerConfig.selectedTitleColor, for: .normal)
         titleButton.titleLabel?.font = innerConfig.selectedTitleFont
@@ -237,14 +201,16 @@ extension MySwitcherView {
         if animated, indicatorView.frame != .zero {
             UIView.animate(withDuration: 0.25) {
                 self.indicatorView.frame =
-                    // 【疑問】originを使うタイミングはいつがいいのか？　// subviewとなるindicatorViewの位置を変えたいとき
+                    // 【疑問】originを使うタイミングはいつがいいのか？
+                    // 【回答】subview(今回でいうindicatorView)の映す位置を変えたいとき
+                    // 【メモ】クロージャ＝なのでselfが必要
                     CGRect(x:titleButton.frame.origin.x+(titleButton.bounds.width-self.innerConfig.indicatorWidth)/2,
                            y: self.frame.height-self.innerConfig.indicatorHeight,
                            width: self.innerConfig.indicatorWidth,
                            height: self.innerConfig.indicatorHeight)
             }
         } else {
-            // 次の処理は上のselfを省略したバージョンではないのか？ // animation(クロージャ)を使わないからselfがいらない？
+            // animationを使わない場合も記述する必要がある
             indicatorView.frame =
                 CGRect(x:titleButton.frame.origin.x+(titleButton.bounds.width-innerConfig.indicatorWidth)/2,
                        y: frame.height-innerConfig.indicatorHeight,
@@ -252,14 +218,15 @@ extension MySwitcherView {
                        height: innerConfig.indicatorHeight)
         }
 
+        // selectedIndexを現在のものに更新する
         self.selectedIndex = index
-        // 【追加】delegateでMyViewControllerにselectItem()つまり中身のupdateSelectedViewController
-        // 【疑問】結局delegateは使わなくてもいいの？
+        print("selectedIndex: ", selectedIndex)
+
         delegate?.segementSwitcherView(self, didSelectAtIndex: index, animated: animated)
-        print(selectedIndex)
+        print("--------------------- End updateSelectedButton ---------------------")
     }
 
-    // buttonを引数にすることでbutton.tagが使える
+    // 【メモ】buttonを引数にすることでbutton.tagが使える
     @objc
     private func didClickTitleButton(_ button: UIButton) {
         selectItem(at: button.tag, animated: true)

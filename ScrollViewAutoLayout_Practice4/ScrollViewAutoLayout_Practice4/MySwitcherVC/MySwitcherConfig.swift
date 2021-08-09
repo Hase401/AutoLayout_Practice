@@ -20,6 +20,7 @@ struct MySwitcherConfig {
 
 
     // 【疑問】最初から初期値として与えてやり方は、良くないのか？
+    //  インスタンスにstaticをつける場合からしたら良いやり方と言える？
     init(horizontalMargin: CGFloat = 16,
          normalTitleFont: UIFont = UIFont.systemFont(ofSize: 15),
          selectedTitleFont: UIFont = UIFont.systemFont(ofSize: 15, weight: .medium),

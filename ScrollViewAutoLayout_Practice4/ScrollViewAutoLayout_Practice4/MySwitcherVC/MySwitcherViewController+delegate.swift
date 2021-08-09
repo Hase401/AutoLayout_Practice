@@ -5,25 +5,20 @@
 //  Created by 長谷川孝太 on 2021/08/05.
 //
 
-// contentViewのスクロール時に呼ばれるかな？
 extension MySwitcherViewController: SegementSlideContentDelegate {
 
     var segementSlideContentScrollViewCount: Int {
-//        print("titleMySwitcherView", titleMySwitcherView)
-        return titleMySwitcherView?.count ?? 0 // 初期値はnilなのでその可能性がある
+        return titleMySwitcherView?.count ?? 0
     }
 
-    // segementSlideContentViewControllerメソッドでContentVC(ContentViewDelegate?)を返している
     func segementSlideContentScrollView(at index: Int) -> ContentViewDelegate? {
-//        let a = segementSlideContentViewController(at: index)
-//        print("a:", a) // Optinal(ContentViewController)
-        return segementSlideContentViewController(at: index) // ContentViewControllerを返す
+        // ContentViewController(ContentViewDelegate)を返す
+        return segementSlideContentViewController(at: index)
     }
 
     // 【追加③】
-    // 【重要メモ】これだけではscrollできない！！のでContentViewのscrollViewが鍵になってくるのではないだろうか？
+    // 【重要メモ】これだけではscrollできない！！ContentViewのscrollViewのcontentSizeが鍵になってくる
     func segementSlideContentView(_ segementSlideContentView: MySwitcherContentView, didSelectAtIndex index: Int, animated: Bool) {
-        cachedChildViewControllerIndex.insert(index)
         if mySwitcherView.selectedIndex != index {
             mySwitcherView.selectItem(at: index, animated: animated)
         }
@@ -31,10 +26,9 @@ extension MySwitcherViewController: SegementSlideContentDelegate {
 
 }
 
-// switcherViewのタbuttonタップ時に呼ばれるdelegateメソッドかな？
+/// switcherViewのタbuttonタップ時に呼ばれるdelegateメソッド
 extension MySwitcherViewController: SegementSlideDefaultSwitcherViewDelegate {
 
-    // 【重要メモ】switcherのbuttonをタップすると、contentViewが表示される機能をまず実現してから逆のdelegate(contentViewのdelegate)もやる
     public func segementSwitcherView(_ segementSlideSwitcherView: MySwitcherView, didSelectAtIndex index: Int, animated: Bool) {
         if mySwitcherContentView.selectedIndex != index {
             mySwitcherContentView.selectItem(at: index, animated: animated)

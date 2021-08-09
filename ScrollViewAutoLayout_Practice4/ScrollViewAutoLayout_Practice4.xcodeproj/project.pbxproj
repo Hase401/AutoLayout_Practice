@@ -72,7 +72,6 @@
 		BA7DE52226BAD7AA00CF5B62 /* ScrollViewAutoLayout_Practice4 */ = {
 			isa = PBXGroup;
 			children = (
-				BA7DE54726BC232800CF5B62 /* MySwitcherVCWithoutDelegate */,
 				BA7DE53E26BADC8E00CF5B62 /* Exteinsion */,
 				BA7DE53726BAD8A200CF5B62 /* MySwitcherVC */,
 				BA7DE52326BAD7AA00CF5B62 /* AppDelegate.swift */,
@@ -106,13 +105,6 @@
 				BA7DE53F26BADCCE00CF5B62 /* UIView+Constraint.swift */,
 			);
 			path = Exteinsion;
-			sourceTree = "<group>";
-		};
-		BA7DE54726BC232800CF5B62 /* MySwitcherVCWithoutDelegate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MySwitcherVCWithoutDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
