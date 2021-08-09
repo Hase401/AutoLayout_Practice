@@ -9,29 +9,29 @@ import UIKit
 
 extension MySwitcherViewController {
 
-    // まだ使わなくても大丈夫
     func setup() {
-        setupSegementSlideSwitcherView()
+        // 【疑問】順番を逆にするだけで呼ばれるメソッドの順番も変わりコンソールに出力される結果も多少変わってくる
+        // 【原因について仮設】addSubviewした順番(最後にaddしたViewほど先にlayoutSubViews()が呼ばれる？)
         setupSegementSlideContentView()
+        setupSegementSlideSwitcherView()
+//        setupSegementSlideContentView() // 呼ぶ順番を変える
     }
 
     func setupSegementSlideSwitcherView() {
-        // addSubviewしてから色々な成約をつけるという順番？
-        // 【重要メモ】このSwitcherViewでのdelegateはswitcherViewのdelegateが終わったあとにしよう
+        // 【疑問】customViewの設定方法は、addSubviewしてから色々な成約をつけるという順番？
         mySwitcherView.delegate = self
         self.view.addSubview(mySwitcherView)
     }
 
     func setupSegementSlideContentView() {
         mySwitcherContentView.delegate = self
-        // ここviewControllerを使ってSegementSlideViewController(self)を渡していたんだ、、
         mySwitcherContentView.viewController = self
         self.view.addSubview(mySwitcherContentView)
     }
 
 
     func layoutSegementSlideScrollView() {
-        /// これは必須
+        
         mySwitcherView.translatesAutoresizingMaskIntoConstraints = false
         // 【エラー】Value of type 'MySwitcherView' has no member 'topConstraint' // Extensionのおかげ？
         // これがあると紫の警告が消える？？
@@ -67,8 +67,8 @@ extension MySwitcherViewController {
             mySwitcherContentView.bottomConstraint = mySwitcherContentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         }
 
-        mySwitcherView.layer.zPosition = -1
         mySwitcherContentView.layer.zPosition = -2
+        mySwitcherView.layer.zPosition = -1
 
     }
 }

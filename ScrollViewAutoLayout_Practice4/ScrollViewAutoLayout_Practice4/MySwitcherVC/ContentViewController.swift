@@ -22,7 +22,6 @@ final class ContentViewController: UIViewController, ContentViewDelegate {
 
 }
 
-/// 【メモ】そもそもUIViewControllerを継承しているのではなくて、tableViewControllerを継承しているから何か普段と違う！！
 extension ContentViewController: UITableViewDelegate {
 }
 
