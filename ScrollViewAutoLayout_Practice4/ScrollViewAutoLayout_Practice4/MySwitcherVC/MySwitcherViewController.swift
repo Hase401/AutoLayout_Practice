@@ -44,7 +44,8 @@ final class MySwitcherViewController: UIViewController {
         mySwitcherView.reloadData()
     }
 
-    func segementSlideContentViewController(at index: Int) -> ContentViewDelegate? {
+    // 【修正】ContentViewDelegate → ContentViewController
+    func segementSlideContentViewController(at index: Int) -> ContentViewController? {
         let contentVC = UIStoryboard(name: "ContentViewController", bundle: nil)
                             .instantiateInitialViewController() as! ContentViewController
         // 【エラー】Type of expression is ambiguous without more context
