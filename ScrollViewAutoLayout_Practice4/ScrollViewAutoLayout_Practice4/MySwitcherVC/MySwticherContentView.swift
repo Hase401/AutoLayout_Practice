@@ -8,9 +8,9 @@
 import UIKit
 
 // 【疑問】プロトコルでviewControllersの中身の型を設定できるのではないか？
-protocol ContentViewDelegate where Self: UIViewController {
-
-}
+//protocol ContentViewDelegate where Self: UIViewController {
+//
+//}
 
 // 【エラー】Method cannot be declared public because its result uses an internal type
 // → このプロトコルをpublicにするとMySwitcherContentViewメソッドのアクセス制御が合わなくてエラーになる
@@ -18,7 +18,8 @@ protocol SegementSlideContentDelegate: AnyObject {
 
     var segementSlideContentScrollViewCount: Int { get }
 
-    func segementSlideContentScrollView(at index: Int) -> ContentViewDelegate?
+    // 【修正】ContentViewDelegate → ContentViewController
+    func segementSlideContentScrollView(at index: Int) -> ContentViewController?
 
     func segementSlideContentView(_ segementSlideContentView: MySwitcherContentView, didSelectAtIndex index: Int, animated: Bool)
 
@@ -29,7 +30,8 @@ final class MySwitcherContentView: UIView {
     private(set) var scrollView = UIScrollView()
     // 【疑問】プロトコルでviewControllersの中身の型を設定できるのではないか？
     // 【疑問】逆にContentViewControllerの型でも行けるんじゃないか？
-    private var viewControllers: [Int: ContentViewDelegate] = [:]
+    // 【修正】ContentViewDelegate → ContentViewController
+    private var viewControllers: [Int: ContentViewController] = [:]
 
     /// you should call `reloadData()` after set this property.
     var defaultSelectedIndex: Int?
@@ -85,7 +87,8 @@ final class MySwitcherContentView: UIView {
         updateSelectedViewController(at: index, animated: animated)
     }
 
-    func dequeueReusableViewController(at index: Int) -> ContentViewDelegate? {
+    // 【修正】ContentViewDelegate → ContentViewController
+    func dequeueReusableViewController(at index: Int) -> ContentViewController? {
         if let childViewController = viewControllers[index] {
             // viewControllers[index]がnilではないとき
             return childViewController
@@ -148,7 +151,8 @@ extension MySwitcherContentView {
     }
 
     // 【メモ】同じ名前のメソッドがviewControllerにもある
-    private func segementSlideContentViewController(at index: Int) -> ContentViewDelegate? {
+    // 【修正】ContentViewDelegate → ContentViewController
+    private func segementSlideContentViewController(at index: Int) -> ContentViewController? {
         if let childViewController = dequeueReusableViewController(at: index) {
             // viewControllers(配列)に何かしらある(つまりnil)ではないなら、そのContentViewDelegateを返す
             return childViewController

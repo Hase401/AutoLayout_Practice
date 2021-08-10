@@ -11,7 +11,8 @@ extension MySwitcherViewController: SegementSlideContentDelegate {
         return titleMySwitcherView?.count ?? 0
     }
 
-    func segementSlideContentScrollView(at index: Int) -> ContentViewDelegate? {
+    // 【修正】ContentViewDelegate → ContentViewController
+    func segementSlideContentScrollView(at index: Int) -> ContentViewController? {
         // ContentViewController(ContentViewDelegate)を返す
         return segementSlideContentViewController(at: index)
     }
