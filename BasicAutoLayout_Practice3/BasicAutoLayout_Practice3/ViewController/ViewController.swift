@@ -11,8 +11,11 @@ final class ViewController: UIViewController {
 
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
+        table.translatesAutoresizingMaskIntoConstraints = false
         table.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
         table.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCell.identifier)
+        // nib()にしないとエラーになる
+        table.register(TestXibTableViewCell.nib(), forCellReuseIdentifier: TestXibTableViewCell.identifier)
         return table
     }()
 
@@ -34,7 +37,33 @@ extension ViewController {
         self.view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = self.view.bounds
+
+
+        // 【パターン①】
+//        tableView.frame = self.view.bounds
+
+        // 【パターン②】
+        // translatesAutoresizingMaskIntoConstraintsがfalseじゃないと動かない
+        NSLayoutConstraint.activate([
+            // horizontal
+            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            // vertical
+            tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+        ])
+        
+        // 【パターン③】
+//        let groups = [
+//            // horizontal
+//            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+//            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+//            // vertical
+//            tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+//            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+//        ]
+//        groups.map { $0.isActive = true }
+        
     }
 
     private func setupModels() {
@@ -69,22 +98,22 @@ extension ViewController {
             })
         ]))
         self.models.append(Section(title: "2021/8", options: [
-            .staticCell(model: SectionOption(title: "Wifi",
+            .testCell(model: SectionOption(title: "Wifi",
                                              icon: UIImage(systemName: "house"),
                                              iconBackgroundColor: .systemPink) {
 
             }),
-            .staticCell(model: SectionOption(title: "Bluetooth",
+            .testCell(model: SectionOption(title: "Bluetooth",
                                              icon: UIImage(systemName: "bluetooth"),
                                              iconBackgroundColor: .link) {
 
             }),
-            .staticCell(model: SectionOption(title: "Airplane Mode",
+            .testCell(model: SectionOption(title: "Airplane Mode",
                                              icon: UIImage(systemName: "airplane"),
                                              iconBackgroundColor: .systemGreen) {
 
             }),
-            .staticCell(model: SectionOption(title: "iCloud",
+            .testCell(model: SectionOption(title: "iCloud",
                                              icon: UIImage(systemName: "icloud"),
                                              iconBackgroundColor: .systemOrange) {
 
@@ -102,6 +131,8 @@ extension ViewController: UITableViewDelegate {
         case .staticCell(let model):
             model.hander()
         case .switchCell(let model):
+            model.hander()
+        case .testCell(let model):
             model.hander()
         }
     }
@@ -136,7 +167,15 @@ extension ViewController: UITableViewDataSource {
             }
             cell.configure(with: model)
             return cell
+        case .testCell(let model):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TestXibTableViewCell.identifier,
+                                                           for: indexPath) as? TestXibTableViewCell else {
+                fatalError("TestXibTableViewCellが返ってきてません")
+            }
+            cell.configure(with: model)
+            return cell
         }
+        
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -32,7 +32,7 @@ final class SettingTableViewCell: UITableViewCell {
         return label
     }()
 
-    // UI部品(プロパティ)をView階層に追加
+    // イニシャライザでUI部品(プロパティ)をView階層に追加
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(iconContainer)
@@ -40,6 +40,30 @@ final class SettingTableViewCell: UITableViewCell {
         contentView.addSubview(label)
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
+
+        // 恐らくAutoLayoutなのにframeのように考えている気がする →　中心を揃える成約を使ったほうがいい
+//        let containerSize = contentView.frame.size.height-12
+//        let imageSize = containerSize/1.5
+//        NSLayoutConstraint.activate([
+//            // horizontal
+//            iconContainer.widthAnchor.constraint(equalToConstant: containerSize),
+//            iconContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+//            iconContainer.trailingAnchor.constraint(equalTo: label.leadingAnchor, constant: -15),
+//            iconImageView.widthAnchor.constraint(equalToConstant: imageSize),
+//            iconImageView.leadingAnchor.constraint(equalTo: iconContainer.leadingAnchor, constant: 5),
+//            iconImageView.trailingAnchor.constraint(equalTo: iconContainer.trailingAnchor, constant: -5),
+//            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+//
+//            // vertical
+//            iconContainer.heightAnchor.constraint(equalToConstant: containerSize),
+//            iconContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+//            iconContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+//            iconImageView.heightAnchor.constraint(equalToConstant: imageSize),
+//            iconImageView.topAnchor.constraint(equalTo: iconContainer.topAnchor, constant: 5),
+//            iconImageView.bottomAnchor.constraint(equalTo: iconContainer.bottomAnchor, constant: -5),
+//            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+//            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+//        ])
     }
 
     required init?(coder: NSCoder) {

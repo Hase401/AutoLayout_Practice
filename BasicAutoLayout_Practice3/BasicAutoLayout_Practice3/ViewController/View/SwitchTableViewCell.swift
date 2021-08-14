@@ -38,7 +38,7 @@ final class SwitchTableViewCell: UITableViewCell {
         return mySwitch
     }()
 
-    // UI部品(プロパティ)をView階層に追加
+    // イニシャライザでUI部品(プロパティ)をView階層に追加
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(iconContainer)
