@@ -46,7 +46,8 @@ final class SettingTableViewCell: UITableViewCell {
         fatalError() // 使わないのでfatalError()しておく
     }
 
-    // 【疑問】レイアウトの前の何が終わるとシステムで呼ばれる？　// 成約が終わる→レイアウトの順番じゃなかったけ？
+
+    // 1つのcellごとに呼ばれている
     override func layoutSubviews() {
         super.layoutSubviews()
 

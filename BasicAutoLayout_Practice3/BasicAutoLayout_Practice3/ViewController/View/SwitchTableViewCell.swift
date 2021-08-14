@@ -53,7 +53,6 @@ final class SwitchTableViewCell: UITableViewCell {
         fatalError() // 使わないのでfatalError()しておく
     }
 
-    // 【疑問】レイアウトの前の何が終わるとシステムで呼ばれる？　// 成約が終わる→レイアウトの順番じゃなかったけ？
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -69,7 +68,7 @@ final class SwitchTableViewCell: UITableViewCell {
                                      height: imageSize)
         label.frame = CGRect(x: 15+15+iconContainer.frame.size.width,
                              y: 0,
-                             width: contentView.frame.size.width-15-15-iconContainer.frame.size.width,
+                             width: contentView.frame.size.width-15-15-iconContainer.frame.size.width-mySwitch.frame.size.width-20,
                              height: contentView.frame.size.height)
         mySwitch.sizeToFit()
         mySwitch.frame = CGRect(x: contentView.frame.size.width-mySwitch.frame.size.width-20,
@@ -78,7 +77,6 @@ final class SwitchTableViewCell: UITableViewCell {
                                 height: mySwitch.frame.size.height)
     }
 
-    // セル再利用のためにnilを設定
     override func prepareForReuse() {
         super.prepareForReuse()
         label.text = nil
