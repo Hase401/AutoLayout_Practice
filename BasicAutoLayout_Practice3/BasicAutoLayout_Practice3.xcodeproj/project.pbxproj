@@ -18,6 +18,8 @@
 		BA89A04C26C6B77200735984 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89A04B26C6B77200735984 /* Section.swift */; };
 		BA89A04E26C6B78B00735984 /* SectionOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89A04D26C6B78B00735984 /* SectionOption.swift */; };
 		BA89A05026C6B7A900735984 /* SectionSwitchOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89A04F26C6B7A900735984 /* SectionSwitchOption.swift */; };
+		BA89A05326C7AFE700735984 /* TestXibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89A05126C7AFE700735984 /* TestXibTableViewCell.swift */; };
+		BA89A05426C7AFE700735984 /* TestXibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA89A05226C7AFE700735984 /* TestXibTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		BA89A04B26C6B77200735984 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		BA89A04D26C6B78B00735984 /* SectionOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOption.swift; sourceTree = "<group>"; };
 		BA89A04F26C6B7A900735984 /* SectionSwitchOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionSwitchOption.swift; sourceTree = "<group>"; };
+		BA89A05126C7AFE700735984 /* TestXibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestXibTableViewCell.swift; sourceTree = "<group>"; };
+		BA89A05226C7AFE700735984 /* TestXibTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestXibTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			children = (
 				BA89A04526C6B6E300735984 /* SettingTableViewCell.swift */,
 				BA89A04726C6B70600735984 /* SwitchTableViewCell.swift */,
+				BA89A05126C7AFE700735984 /* TestXibTableViewCell.swift */,
+				BA89A05226C7AFE700735984 /* TestXibTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +188,7 @@
 				BA89A03B26C6B67700735984 /* LaunchScreen.storyboard in Resources */,
 				BA89A03826C6B67700735984 /* Assets.xcassets in Resources */,
 				BA89A03626C6B67400735984 /* Main.storyboard in Resources */,
+				BA89A05426C7AFE700735984 /* TestXibTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +207,7 @@
 				BA89A04C26C6B77200735984 /* Section.swift in Sources */,
 				BA89A04626C6B6E300735984 /* SettingTableViewCell.swift in Sources */,
 				BA89A03126C6B67400735984 /* SceneDelegate.swift in Sources */,
+				BA89A05326C7AFE700735984 /* TestXibTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

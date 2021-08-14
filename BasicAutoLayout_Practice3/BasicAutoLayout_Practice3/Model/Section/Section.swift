@@ -13,4 +13,6 @@ struct Section {
 enum SectionOptionType {
     case staticCell(model: SectionOption) // イニシャライザ？
     case switchCell(model: SectionSwitchOption) // イニシャライザ?
+    // 追加
+    case testCell(model: SectionOption)
 }
