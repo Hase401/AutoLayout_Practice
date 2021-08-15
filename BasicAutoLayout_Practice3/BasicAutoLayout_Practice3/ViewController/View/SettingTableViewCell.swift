@@ -13,6 +13,7 @@ final class SettingTableViewCell: UITableViewCell {
 
     private let iconContainer: UIView =  {
         let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true // subviewがsuperviewのboundsを超えない
         view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
@@ -21,6 +22,7 @@ final class SettingTableViewCell: UITableViewCell {
 
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -28,6 +30,7 @@ final class SettingTableViewCell: UITableViewCell {
 
     private let label: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         return label
     }()
@@ -41,55 +44,53 @@ final class SettingTableViewCell: UITableViewCell {
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
 
-        // 恐らくAutoLayoutなのにframeのように考えている気がする →　中心を揃える成約を使ったほうがいい
-//        let containerSize = contentView.frame.size.height-12
-//        let imageSize = containerSize/1.5
-//        NSLayoutConstraint.activate([
-//            // horizontal
-//            iconContainer.widthAnchor.constraint(equalToConstant: containerSize),
-//            iconContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-//            iconContainer.trailingAnchor.constraint(equalTo: label.leadingAnchor, constant: -15),
-//            iconImageView.widthAnchor.constraint(equalToConstant: imageSize),
-//            iconImageView.leadingAnchor.constraint(equalTo: iconContainer.leadingAnchor, constant: 5),
-//            iconImageView.trailingAnchor.constraint(equalTo: iconContainer.trailingAnchor, constant: -5),
+//         恐らくAutoLayoutなのにframeのように考えている気がする →　中心を揃える成約を使ったほうがいい
+        NSLayoutConstraint.activate([
+            // witdh
+            iconContainer.widthAnchor.constraint(equalToConstant: 30),
+            iconImageView.widthAnchor.constraint(equalToConstant: 20),
+
+            // height
+            iconContainer.heightAnchor.constraint(equalToConstant: 30),
+            iconImageView.heightAnchor.constraint(equalToConstant: 20),
+
+            // horizontal(X)
+            iconImageView.centerXAnchor.constraint(equalTo: iconContainer.centerXAnchor),
+            iconContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            label.leadingAnchor.constraint(equalTo: iconContainer.trailingAnchor, constant: 15),
 //            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//
-//            // vertical
-//            iconContainer.heightAnchor.constraint(equalToConstant: containerSize),
-//            iconContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-//            iconContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-//            iconImageView.heightAnchor.constraint(equalToConstant: imageSize),
-//            iconImageView.topAnchor.constraint(equalTo: iconContainer.topAnchor, constant: 5),
-//            iconImageView.bottomAnchor.constraint(equalTo: iconContainer.bottomAnchor, constant: -5),
-//            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-//            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
-//        ])
+
+            // vertical(Y)
+            iconContainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            iconImageView.centerYAnchor.constraint(equalTo: iconContainer.centerYAnchor),
+            iconContainer.centerYAnchor.constraint(equalTo: label.centerYAnchor)
+        ])
     }
 
     required init?(coder: NSCoder) {
         fatalError() // 使わないのでfatalError()しておく
     }
 
-
+    // frameでレイアウトを設定する場合
     // 1つのcellごとに呼ばれている
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        let size: CGFloat = contentView.frame.size.height-12
-        iconContainer.frame = CGRect(x: 15,
-                                     y: 12/2,
-                                     width: size,
-                                     height: size)
-        let imageSize: CGFloat  = size/1.5
-        iconImageView.frame = CGRect(x: (size-imageSize)/2,
-                                     y: (size-imageSize)/2,
-                                     width: imageSize,
-                                     height: imageSize)
-        label.frame = CGRect(x: 15+15+iconContainer.frame.size.width,
-                             y: 0,
-                             width: contentView.frame.size.width-15-15-iconContainer.frame.size.width,
-                             height: contentView.frame.size.height)
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        let size: CGFloat = contentView.frame.size.height-12
+//        iconContainer.frame = CGRect(x: 15,
+//                                     y: 12/2,
+//                                     width: size,
+//                                     height: size)
+//        let imageSize: CGFloat  = size/1.5
+//        iconImageView.frame = CGRect(x: (size-imageSize)/2,
+//                                     y: (size-imageSize)/2,
+//                                     width: imageSize,
+//                                     height: imageSize)
+//        label.frame = CGRect(x: 15+15+iconContainer.frame.size.width,
+//                             y: 0,
+//                             width: contentView.frame.size.width-15-15-iconContainer.frame.size.width,
+//                             height: contentView.frame.size.height)
+//    }
 
     override func prepareForReuse() {
         super.prepareForReuse()
