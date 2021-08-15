@@ -48,6 +48,7 @@
                     <constraint firstItem="ysa-Oc-Alu" firstAttribute="leading" secondItem="pXj-H2-vAH" secondAttribute="trailing" constant="15" id="38S-Se-ZYe"/>
                     <constraint firstItem="pXj-H2-vAH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="8IT-dc-XGv"/>
                     <constraint firstItem="pXj-H2-vAH" firstAttribute="centerY" secondItem="ysa-Oc-Alu" secondAttribute="centerY" id="Z7R-bR-hAp"/>
+                    <constraint firstItem="pXj-H2-vAH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ovV-QF-Ds9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
