@@ -44,7 +44,6 @@ final class SettingTableViewCell: UITableViewCell {
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
 
-//         恐らくAutoLayoutなのにframeのように考えている気がする →　中心を揃える成約を使ったほうがいい
         NSLayoutConstraint.activate([
             // witdh
             iconContainer.widthAnchor.constraint(equalToConstant: 30),
@@ -68,7 +67,7 @@ final class SettingTableViewCell: UITableViewCell {
     }
 
     required init?(coder: NSCoder) {
-        fatalError() // 使わないのでfatalError()しておく
+        fatalError() // 使わないのでfatalError()
     }
 
     // frameでレイアウトを設定する場合

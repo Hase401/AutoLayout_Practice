@@ -46,11 +46,11 @@ final class SwitchTableViewCell: UITableViewCell {
         contentView.addSubview(label)
         contentView.addSubview(mySwitch)
         contentView.clipsToBounds = true
-        accessoryType = .none // ここを.noneにする
+        accessoryType = .none
     }
 
     required init?(coder: NSCoder) {
-        fatalError() // 使わないのでfatalError()しておく
+        fatalError() // 使わないのでfatalError()
     }
 
     override func layoutSubviews() {

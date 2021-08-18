@@ -12,5 +12,6 @@ struct SectionSwitchOption {
     let icon: UIImage? // nilは"設定していない"を表す
     let iconBackgroundColor: UIColor
     let hander: () -> Void
-    var isOn: Bool // ここだけ追加
+    // 追加
+    var isOn: Bool
 }
