@@ -127,7 +127,7 @@ extension ViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let type = models[indexPath.section].options[indexPath.row]
         switch type.self {
-        // 【疑問】このlet modelでやっている仕組みは何か？
+        // 【疑問】このlet modelでやっている仕組みは？
         case .staticCell(let model):
             model.hander()
         case .switchCell(let model):

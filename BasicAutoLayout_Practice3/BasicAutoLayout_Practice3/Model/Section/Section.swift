@@ -11,8 +11,9 @@ struct Section {
 }
 
 enum SectionOptionType {
-    case staticCell(model: SectionOption) // イニシャライザ？
-    case switchCell(model: SectionSwitchOption) // イニシャライザ?
-    // 追加
+    // 【疑問】ここの仕組み(文法)は何か？
+    case staticCell(model: SectionOption)
+    case switchCell(model: SectionSwitchOption)
+    // 追加  // viewControllerでのコードが長くなりがちなので設計が悪い気がする
     case testCell(model: SectionOption)
 }
